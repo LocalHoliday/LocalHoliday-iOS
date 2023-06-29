@@ -9,11 +9,16 @@ import SwiftUI
 
 struct SquarePicture: View {
     let image: Image
-    init(image: Image) {
+    let size: CGFloat?
+    init(image: Image, size: CGFloat? = nil) {
         self.image = image
+        self.size = size
     }
     var body: some View {
         image
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .frame(width: size, height: size)
     }
 }
 

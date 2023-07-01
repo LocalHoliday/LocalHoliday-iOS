@@ -39,6 +39,16 @@ struct HomeView: View {
                     .padding(.horizontal, Size.Inner)
                     .padding(.vertical, Size.Outer)
                 
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: Size.M) {
+                        ForEach(0..<5) { index in
+                            BookView()
+                                .frame(width: UIScreen.main.bounds.width / 2)
+                        }
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width)
+                
                 Text("☀️ 이번 여름에 여행할 곳을 고민하고 있다면?!")
                     .font(.H4SB)
                     .padding(.horizontal, Size.Inner)

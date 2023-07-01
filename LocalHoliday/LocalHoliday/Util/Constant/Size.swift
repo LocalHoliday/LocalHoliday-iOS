@@ -11,6 +11,7 @@ struct Size {
     static let Outer = 48.0
     static let Inner = 16.0
     static let Shadow = 4.0
+    static let M = 24.0
     static let S = 20.0
     static let XS = 4.0
     static let XXS = 2.0

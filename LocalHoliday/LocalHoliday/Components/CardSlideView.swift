@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CardSlideView: View {
     var images = [
-        ImageView(id: 0, imageName: "image1"),
-        ImageView(id: 1, imageName: "image2"),
-        ImageView(id: 2, imageName: "image3")
+        ImageView(id: 0, imageName: "Firefly"),
+        ImageView(id: 1, imageName: "Firefly"),
+        ImageView(id: 2, imageName: "Firefly")
     ]
     @State private var isScrapped = false
     @State private var currentPage = 0
@@ -46,11 +46,13 @@ struct CardSlideView: View {
                             .renderingMode(.original)
                             .frame(width: Size.S, height: Size.S)
                             .padding()
+                            
                     }
                 }
                 .buttonStyle(.plain)
                 .contentShape(Rectangle())
             }
+            .cornerRadius(Radius.Small)
             
             HStack {
                 Spacer()
@@ -74,25 +76,12 @@ struct CardSlideView: View {
                 .padding(.top, Size.XXS)
                 .foregroundColor(.tertiary)
         }
-        .cornerRadius(Radius.Small)
     }
 }
 
 struct CardSlideView_Previews: PreviewProvider {
     static var previews: some View {
         CardSlideView()
-    }
-}
-
-struct ImageView: View {
-    var id: Int
-    var imageName: String
-    
-    var body: some View {
-        Image.Firefly
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .tag(id)
     }
 }
 

@@ -13,6 +13,7 @@ extension Image {
     static let 경기 = Image("경기")
     static let LocalHoliday = Image("LocalHoliday")
     static let Splash = Image("Splash")
+    static let Firefly = Image("Firefly")
 
     // MARK: - ICON
     static let Home = Image("Home")

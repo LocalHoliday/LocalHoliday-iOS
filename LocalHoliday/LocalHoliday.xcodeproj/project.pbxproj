@@ -26,6 +26,7 @@
 		6FB4A2D82A4E07DA00943CD4 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2D72A4E07DA00943CD4 /* IconView.swift */; };
 		6FB4A2DB2A4E08C100943CD4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2DA2A4E08C100943CD4 /* HomeView.swift */; };
 		6FB4A2DD2A4E0A0700943CD4 /* CountryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2DC2A4E0A0700943CD4 /* CountryGridView.swift */; };
+		6FB4A2DF2A503E8A00943CD4 /* CardSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2DE2A503E8A00943CD4 /* CardSlideView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		6FB4A2D72A4E07DA00943CD4 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		6FB4A2DA2A4E08C100943CD4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6FB4A2DC2A4E0A0700943CD4 /* CountryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryGridView.swift; sourceTree = "<group>"; };
+		6FB4A2DE2A503E8A00943CD4 /* CardSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSlideView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				6FB4A2B32A4DDE3B00943CD4 /* SquarePicture.swift */,
 				6FB4A2D72A4E07DA00943CD4 /* IconView.swift */,
 				6FB4A2DC2A4E0A0700943CD4 /* CountryGridView.swift */,
+				6FB4A2DE2A503E8A00943CD4 /* CardSlideView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -141,18 +144,18 @@
 		6FB4A2D02A4E05A400943CD4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6FB4A2D12A4E05B200943CD4 /* Enum */,
+				6FB4A2D12A4E05B200943CD4 /* Constant */,
 				6FB4A2B52A4DFD3C00943CD4 /* Extension */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		6FB4A2D12A4E05B200943CD4 /* Enum */ = {
+		6FB4A2D12A4E05B200943CD4 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				6FB4A2D32A4E05FD00943CD4 /* Size.swift */,
 			);
-			path = Enum;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		6FB4A2D22A4E05E800943CD4 /* Resources */ = {
@@ -253,6 +256,7 @@
 				6FB4A2B92A4DFDE100943CD4 /* Image+Extension.swift in Sources */,
 				6FB4A2D42A4E05FD00943CD4 /* Size.swift in Sources */,
 				6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */,
+				6FB4A2DF2A503E8A00943CD4 /* CardSlideView.swift in Sources */,
 				6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */,
 				6FB4A2B42A4DDE3B00943CD4 /* SquarePicture.swift in Sources */,
 				6FB4A2D82A4E07DA00943CD4 /* IconView.swift in Sources */,

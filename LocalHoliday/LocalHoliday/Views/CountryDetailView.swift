@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CountryDetailView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var selected: Int = 0
     let country: String
     var body: some View {
@@ -48,7 +49,7 @@ struct CountryDetailView: View {
                     }
                 }
                 Button {
-                    print("Button Tapped")
+                    dismiss()
                 } label: {
                     Image(systemName: "arrow.backward")
                         .renderingMode(.template)

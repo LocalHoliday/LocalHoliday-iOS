@@ -21,9 +21,18 @@ struct CountryGridView: View {
                     IconView(image: Image.경기, title: "경기")
                 }
                 .buttonStyle(.plain)
-                IconView(image: Image.경기, title: "경기")
-                IconView(image: Image.경기, title: "경기")
-                IconView(image: Image.경기, title: "경기")
+                NavigationLink(value: "경기") {
+                    IconView(image: Image.경기, title: "경기")
+                }
+                .buttonStyle(.plain)
+                NavigationLink(value: "경기") {
+                    IconView(image: Image.경기, title: "경기")
+                }
+                .buttonStyle(.plain)
+                NavigationLink(value: "경기") {
+                    IconView(image: Image.경기, title: "경기")
+                }
+                .buttonStyle(.plain)
             }
             .padding(.horizontal, Size.Inner / 2)
         }

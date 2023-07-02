@@ -9,8 +9,11 @@ import SwiftUI
 
 struct CountryDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var playItems: [PlayItem] = []
+    @State private var jobItems: [JobItem] = []
     @State private var selected: Int = 0
-    let country: String
+    @State private var isAPICalled: Bool = false
+    let country: Country
     var body: some View {
         GeometryReader { proxy in
             ZStack(alignment: .topLeading) {
@@ -21,13 +24,13 @@ struct CountryDetailView: View {
                             .frame(height: proxy.size.width / 390 * 158)
                             .background(.black.opacity(0.4))
                             .background(
-                                ImageView(id: 0, imageName: "\(country)_wide")
+                                ImageView(id: 0, imageName: "\(country.title)_wide")
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 390 * 158)
                                     .clipped()
                             )
                         
-                        Text("경기")
+                        Text(country.title)
                             .font(.H1B)
                             .foregroundColor(.white)
                     }
@@ -40,15 +43,25 @@ struct CountryDetailView: View {
                     ScrollView {
                         VStack(alignment: .leading, spacing: Size.M * 2) {
                             if selected == 0 {
-                                ForEach(0..<5, id: \.self) { _ in
-                                    JobItemView()
-                                        .frame(maxHeight: 100)
+                                ForEach(jobItems.indices, id: \.self) { index in
+                                    NavigationLink {
+                                        JobItemDetailView(jobItem: self.$jobItems[index])
+                                    } label: {
+                                        JobItemView(jobItem: self.$jobItems[index])
+                                            .frame(maxHeight: 100)
+                                    }
+                                    .buttonStyle(.plain)
                                     Divider()
                                 }
                             } else {
-                                ForEach(0..<5, id: \.self) { _ in
-                                    PlayItemView()
-                                        .frame(maxHeight: 100)
+                                ForEach(playItems.indices, id: \.self) { index in
+                                    NavigationLink {
+                                        PlayItemDetailView(playItem: self.$playItems[index])
+                                    } label: {
+                                        PlayItemView(playItem: self.$playItems[index])
+                                            .frame(maxHeight: 100)
+                                    }
+                                    .buttonStyle(.plain)
                                     Divider()
                                 }
                             }
@@ -68,6 +81,13 @@ struct CountryDetailView: View {
                 }
             }
         }
+        .onAppear {
+            if !isAPICalled {
+                isAPICalled.toggle()
+                playItems = PlayItem.defaultPlayItems
+                jobItems = JobItem.defaultJobItems
+            }
+        }
         .navigationTitle("")
         .toolbar(.hidden)
     }
@@ -75,6 +95,8 @@ struct CountryDetailView: View {
 
 struct CountryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryDetailView(country: "경기")
+        NavigationStack {
+            CountryDetailView(country: .default)
+        }
     }
 }

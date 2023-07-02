@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CountryGridView: View {
+    @Binding var countries: [Country]
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -16,29 +17,17 @@ struct CountryGridView: View {
     ]
     var body: some View {
         LazyVGrid(columns: columns, spacing: Size.Inner) {
-            ForEach(0..<2, id: \.self) { _ in
-                NavigationLink(value: "경기") {
-                    IconView(image: Image.경기, title: "경기")
-                }
-                .buttonStyle(.plain)
-                NavigationLink(value: "경기") {
-                    IconView(image: Image.경기, title: "경기")
-                }
-                .buttonStyle(.plain)
-                NavigationLink(value: "경기") {
-                    IconView(image: Image.경기, title: "경기")
-                }
-                .buttonStyle(.plain)
-                NavigationLink(value: "경기") {
-                    IconView(image: Image.경기, title: "경기")
+            ForEach(countries) { country in
+                NavigationLink(value: country) {
+                    IconView(image: Image.경기, title: country.title)
                 }
                 .buttonStyle(.plain)
             }
             .padding(.horizontal, Size.Inner / 2)
         }
         .padding(.horizontal, Size.Inner / 2)
-        .navigationDestination(for: String.self) { title in
-            CountryDetailView(country: title)
+        .navigationDestination(for: Country.self) { country in
+            CountryDetailView(country: country)
         }
     }
 }
@@ -46,7 +35,7 @@ struct CountryGridView: View {
 struct CountryGridView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CountryGridView()
+            CountryGridView(countries: .constant(Country.defaultCountries))
         }
     }
 }

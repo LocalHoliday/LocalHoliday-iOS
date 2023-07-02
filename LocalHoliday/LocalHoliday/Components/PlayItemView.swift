@@ -8,29 +8,30 @@
 import SwiftUI
 
 struct PlayItemView: View {
-    @State private var isScrapped = false
+    @Binding var playItem: PlayItem
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
             ImageView(id: 0, imageName: "경기")
             
             VStack(alignment: .leading, spacing: Size.XS) {
                 HStack {
-                    Text("덕유산 글램핑 즐기기")
+                    Text(playItem.title)
                         .font(.B1M)
                         .padding(.vertical, Size.XS)
                     Spacer()
                 }
-                LocationComponent(location: "전라북도 남원시 금하정2길 20(금동)")
+                LocationComponent(location: playItem.location)
             }
             .frame(maxWidth: .infinity)
             
-            ScrapButton(isScrapped: $isScrapped)
+            ScrapButton(isScrapped: $playItem.isScrapped)
         }
     }
 }
 
 struct PlayItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayItemView()
+        let item = PlayItem.default
+        PlayItemView(playItem: .constant(item))
     }
 }

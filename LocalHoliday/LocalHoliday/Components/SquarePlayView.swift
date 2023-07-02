@@ -1,5 +1,5 @@
 //
-//  PlayView.swift
+//  SquarePlayView.swift
 //  LocalHoliday
 //
 //  Created by 정종인 on 2023/07/02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayView: View {
+struct SquarePlayView: View {
     var body: some View {
         VStack(alignment: .leading) {
             ImageView(id: 0, imageName: "SamplePlayImage", aspectRatio: 1)
@@ -24,6 +24,6 @@ struct PlayView: View {
 
 struct PlayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayView()
+        SquarePlayView()
     }
 }

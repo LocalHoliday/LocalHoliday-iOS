@@ -9,13 +9,14 @@ import SwiftUI
 
 struct LocationComponent: View {
     let location: String
+    var font: Font = .B4R
     var body: some View {
         HStack {
             Image.Mappin
                 .frame(width: 12, height: 12)
             
             Text(location)
-                .font(.B4R)
+                .font(font)
         }
     }
 }

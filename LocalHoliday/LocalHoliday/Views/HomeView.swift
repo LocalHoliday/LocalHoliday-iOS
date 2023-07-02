@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var modelData: ModelData
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
@@ -17,7 +18,7 @@ struct HomeView: View {
                         .padding(.all, Size.Outer)
                     Spacer()
                 }
-                CountryGridView()
+                CountryGridView(countries: $modelData.countries)
                 Group {
                     Text("🏖️ 이번 여름의 ")
                     + Text("로컬 홀리데이")
@@ -58,7 +59,7 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: Size.S) {
                         ForEach(0..<5) { index in
-                            PlayView()
+                            SquarePlayView()
                                 .frame(width: UIScreen.main.bounds.width / 11 * 5)
                         }
                     }
@@ -73,6 +74,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             HomeView()
+                .environmentObject(ModelData())
         }
     }
 }

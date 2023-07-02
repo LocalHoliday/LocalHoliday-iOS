@@ -38,14 +38,23 @@ struct CountryDetailView: View {
                         .padding()
                     
                     ScrollView {
-                        VStack(spacing: Size.M * 2) {
-                            ForEach(0..<5, id: \.self) { _ in
-                                JobItemView()
-                                    .frame(maxHeight: 100)
-                                Divider()
+                        VStack(alignment: .leading, spacing: Size.M * 2) {
+                            if selected == 0 {
+                                ForEach(0..<5, id: \.self) { _ in
+                                    JobItemView()
+                                        .frame(maxHeight: 100)
+                                    Divider()
+                                }
+                            } else {
+                                ForEach(0..<5, id: \.self) { _ in
+                                    PlayItemView()
+                                        .frame(maxHeight: 100)
+                                    Divider()
+                                }
                             }
                         }
                         .padding(Size.Inner)
+                        .frame(maxWidth: .infinity)
                     }
                 }
                 Button {

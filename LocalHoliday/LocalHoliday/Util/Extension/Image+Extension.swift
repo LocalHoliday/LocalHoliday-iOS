@@ -21,4 +21,5 @@ extension Image {
     static let Reservation = Image("Reservation")
     static let Search = Image("Search")
     static let Star = Image("Star")
+    static let Mappin = Image("Mappin")
 }

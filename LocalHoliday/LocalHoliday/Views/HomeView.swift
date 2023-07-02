@@ -46,6 +46,7 @@ struct HomeView: View {
                                 .frame(width: UIScreen.main.bounds.width / 2)
                         }
                     }
+                    .padding(.horizontal, Size.Inner)
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 
@@ -53,6 +54,16 @@ struct HomeView: View {
                     .font(.H4SB)
                     .padding(.horizontal, Size.Inner)
                     .padding(.vertical, Size.Outer)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: Size.S) {
+                        ForEach(0..<5) { index in
+                            PlayView()
+                                .frame(width: UIScreen.main.bounds.width / 11 * 5)
+                        }
+                    }
+                    .padding(.horizontal, Size.Inner)
+                }
             }
         }
     }

@@ -13,7 +13,6 @@ struct CardSlideView: View {
         ImageView(id: 1, imageName: "Firefly"),
         ImageView(id: 2, imageName: "Firefly")
     ]
-    @State private var isScrapped = false
     @State private var currentPage = 0
     var body: some View {
         VStack(alignment: .leading) {
@@ -32,25 +31,7 @@ struct CardSlideView: View {
                 .aspectRatio(1, contentMode: .fit)
                 .background(Color.gray100)
                 
-                Button {
-                    isScrapped.toggle()
-                } label: {
-                    if !isScrapped {
-                        Image(systemName: "star")
-                            .renderingMode(.template)
-                            .foregroundColor(.gray200)
-                            .frame(width: Size.S, height: Size.S)
-                            .padding()
-                    } else {
-                        Image(systemName: "star.fill")
-                            .renderingMode(.original)
-                            .frame(width: Size.S, height: Size.S)
-                            .padding()
-                            
-                    }
-                }
-                .buttonStyle(.plain)
-                .contentShape(Rectangle())
+                
             }
             .cornerRadius(Radius.Small)
             

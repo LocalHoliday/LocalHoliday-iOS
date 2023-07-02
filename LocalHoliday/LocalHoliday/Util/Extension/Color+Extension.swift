@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let primary = Color("Primary")
+    static let Primary = Color("Primary")
     static let secondary = Color("Secondary")
     static let tertiary = Color("Tertiary")
     static let quaternary = Color("Quaternary")

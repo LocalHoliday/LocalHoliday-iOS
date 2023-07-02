@@ -40,7 +40,7 @@ struct HomeView: View {
                     .padding(.vertical, Size.Outer)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: Size.M) {
+                    HStack(spacing: Size.XL) {
                         ForEach(0..<5) { index in
                             BookView()
                                 .frame(width: UIScreen.main.bounds.width / 2)
@@ -71,6 +71,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        NavigationStack {
+            HomeView()
+        }
     }
 }

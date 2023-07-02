@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AA2A51843500D7A000 /* JobItemView.swift */; };
+		6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AC2A51853100D7A000 /* LocationComponent.swift */; };
+		6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */; };
 		6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A32A4DDD5700943CD4 /* LocalHolidayApp.swift */; };
 		6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */; };
 		6FB4A2A82A4DDD5800943CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A72A4DDD5800943CD4 /* Assets.xcassets */; };
@@ -30,9 +33,14 @@
 		6FB4A2E32A5050F500943CD4 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E22A5050F500943CD4 /* BookView.swift */; };
 		6FB4A2E52A507A5400943CD4 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E42A507A5400943CD4 /* ImageView.swift */; };
 		6FB4A2E72A51539D00943CD4 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E62A51539D00943CD4 /* PlayView.swift */; };
+		6FB4A2E92A5165BC00943CD4 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E82A5165BC00943CD4 /* CountryDetailView.swift */; };
+		6FB4A2F12A5174B200943CD4 /* HorizontalSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2F02A5174B200943CD4 /* HorizontalSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F56B5AA2A51843500D7A000 /* JobItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItemView.swift; sourceTree = "<group>"; };
+		6F56B5AC2A51853100D7A000 /* LocationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationComponent.swift; sourceTree = "<group>"; };
+		6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
 		6FB4A2A02A4DDD5700943CD4 /* LocalHoliday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalHoliday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB4A2A32A4DDD5700943CD4 /* LocalHolidayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHolidayApp.swift; sourceTree = "<group>"; };
 		6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +67,8 @@
 		6FB4A2E22A5050F500943CD4 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		6FB4A2E42A507A5400943CD4 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		6FB4A2E62A51539D00943CD4 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
+		6FB4A2E82A5165BC00943CD4 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
+		6FB4A2F02A5174B200943CD4 /* HorizontalSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,10 @@
 				6FB4A2E22A5050F500943CD4 /* BookView.swift */,
 				6FB4A2E42A507A5400943CD4 /* ImageView.swift */,
 				6FB4A2E62A51539D00943CD4 /* PlayView.swift */,
+				6FB4A2F02A5174B200943CD4 /* HorizontalSelectView.swift */,
+				6F56B5AA2A51843500D7A000 /* JobItemView.swift */,
+				6F56B5AC2A51853100D7A000 /* LocationComponent.swift */,
+				6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -180,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB4A2DA2A4E08C100943CD4 /* HomeView.swift */,
+				6FB4A2E82A5165BC00943CD4 /* CountryDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,14 +277,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FB4A2DB2A4E08C100943CD4 /* HomeView.swift in Sources */,
+				6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */,
 				6FB4A2B92A4DFDE100943CD4 /* Image+Extension.swift in Sources */,
 				6FB4A2D42A4E05FD00943CD4 /* Size.swift in Sources */,
 				6FB4A2E32A5050F500943CD4 /* BookView.swift in Sources */,
 				6FB4A2E52A507A5400943CD4 /* ImageView.swift in Sources */,
 				6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */,
+				6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */,
 				6FB4A2DF2A503E8A00943CD4 /* CardSlideView.swift in Sources */,
 				6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */,
 				6FB4A2B42A4DDE3B00943CD4 /* SquarePicture.swift in Sources */,
+				6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */,
+				6FB4A2E92A5165BC00943CD4 /* CountryDetailView.swift in Sources */,
+				6FB4A2F12A5174B200943CD4 /* HorizontalSelectView.swift in Sources */,
 				6FB4A2D82A4E07DA00943CD4 /* IconView.swift in Sources */,
 				6FB4A2E72A51539D00943CD4 /* PlayView.swift in Sources */,
 				6FB4A2BB2A4DFF2C00943CD4 /* Font+Extension.swift in Sources */,

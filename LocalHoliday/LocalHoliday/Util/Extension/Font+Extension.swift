@@ -17,6 +17,7 @@ extension Font {
     static let H2SB = Font.custom("SUIT-SemiBold", size: 22)
     static let H3SB = Font.custom("SUIT-SemiBold", size: 18)
     static let H4SB = Font.custom("SUIT-SemiBold", size: 16)
+    static let H5SB = Font.custom("SUIT-SemiBold", size: 14)
 
     static let B1M = Font.custom("SUIT-Medium", size: 12)
     static let B1R = Font.custom("SUIT-Regular", size: 12)

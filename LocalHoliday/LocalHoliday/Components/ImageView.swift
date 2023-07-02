@@ -10,7 +10,7 @@ import SwiftUI
 struct ImageView: View {
     var id: Int
     var imageName: String
-    var aspectRatio: CGFloat = 1
+    var aspectRatio: CGFloat?
     
     var body: some View {
         Image(imageName)

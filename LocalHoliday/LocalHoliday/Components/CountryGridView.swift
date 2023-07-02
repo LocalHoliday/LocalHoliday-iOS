@@ -17,7 +17,10 @@ struct CountryGridView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: Size.Inner) {
             ForEach(0..<2, id: \.self) { _ in
-                IconView(image: Image.경기, title: "경기")
+                NavigationLink(value: "경기") {
+                    IconView(image: Image.경기, title: "경기")
+                }
+                .buttonStyle(.plain)
                 IconView(image: Image.경기, title: "경기")
                 IconView(image: Image.경기, title: "경기")
                 IconView(image: Image.경기, title: "경기")
@@ -25,11 +28,16 @@ struct CountryGridView: View {
             .padding(.horizontal, Size.Inner / 2)
         }
         .padding(.horizontal, Size.Inner / 2)
+        .navigationDestination(for: String.self) { title in
+            CountryDetailView(country: title)
+        }
     }
 }
 
 struct CountryGridView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryGridView()
+        NavigationStack {
+            CountryGridView()
+        }
     }
 }

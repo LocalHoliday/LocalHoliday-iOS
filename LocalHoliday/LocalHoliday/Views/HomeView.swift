@@ -22,7 +22,7 @@ struct HomeView: View {
                 Group {
                     Text("🏖️ 이번 여름의 ")
                     + Text("로컬 홀리데이")
-                        .foregroundColor(Color.accentColor)
+                        .foregroundColor(Color.Primary)
                     + Text("를 추천해드릴게요")
                 }
                 .font(.H4SB)

@@ -30,16 +30,13 @@ struct CardSlideView: View {
                 }
                 .aspectRatio(1, contentMode: .fit)
                 .background(Color.gray100)
-                
-                
             }
             .cornerRadius(Radius.Small)
             
             HStack {
-                Spacer()
                 Text("반딧불이와 한께하는 무주에서의 로컬 홀리데이")
                     .font(.B3SB)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                 Spacer()
             }
             .padding(.top, Size.XS * 2)

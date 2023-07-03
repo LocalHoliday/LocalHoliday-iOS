@@ -9,10 +9,12 @@ import SwiftUI
 
 struct PlayItemDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var isAPICalled: Bool = false
     @Binding var playItem: PlayItem
+    @State private var reviews: [Review] = []
     var body: some View {
         GeometryReader { proxy in
-            ZStack(alignment: .bottom) {
+            VStack {
                 ScrollView {
                     ZStack(alignment: .topLeading) {
                         VStack(alignment: .leading) {
@@ -46,6 +48,9 @@ struct PlayItemDetailView: View {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: Size.XS)
                                 .foregroundColor(.gray100)
+                            
+                            ReviewsView(reviews: $reviews)
+                                .padding(Size.Inner)
                         }
                         Button {
                             dismiss()
@@ -76,6 +81,13 @@ struct PlayItemDetailView: View {
                     .buttonStyle(.plain)
                 }
                 .padding(Size.M)
+                .background(Color.white)
+            }
+        }
+        .onAppear {
+            if !isAPICalled {
+                isAPICalled.toggle()
+                reviews = Review.defaultReviews
             }
         }
         .navigationTitle("")

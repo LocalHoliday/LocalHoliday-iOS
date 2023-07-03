@@ -11,12 +11,16 @@ struct Size {
     static let Outer = 48.0
     static let Inner = 16.0
     static let Shadow = 4.0
+    static let XXXL = 40.0
+    static let XXL = 32.0
     static let XL = 24.0
     static let L = 20.0
     static let M = 16.0
     static let S = 8.0
     static let XS = 4.0
     static let XXS = 2.0
+    
+    static let ImageMaxHeight = 200.0
 }
 
 struct Radius {

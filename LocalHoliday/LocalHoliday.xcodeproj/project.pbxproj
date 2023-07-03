@@ -18,6 +18,9 @@
 		6F56B5C22A51CD3100D7A000 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5C12A51CD3100D7A000 /* ModelData.swift */; };
 		6F56B5C42A51CF5F00D7A000 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5C32A51CF5F00D7A000 /* Country.swift */; };
 		6F56B5C62A51D62500D7A000 /* PlayItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5C52A51D62500D7A000 /* PlayItemDetailView.swift */; };
+		6F56B5C82A52D5C300D7A000 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5C72A52D5C300D7A000 /* ReviewsView.swift */; };
+		6F56B5CA2A52D86200D7A000 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5C92A52D86200D7A000 /* Review.swift */; };
+		6F56B5CD2A53029800D7A000 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5CC2A53029800D7A000 /* Square.swift */; };
 		6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A32A4DDD5700943CD4 /* LocalHolidayApp.swift */; };
 		6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */; };
 		6FB4A2A82A4DDD5800943CD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB4A2A72A4DDD5800943CD4 /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 		6F56B5C12A51CD3100D7A000 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		6F56B5C32A51CF5F00D7A000 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		6F56B5C52A51D62500D7A000 /* PlayItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayItemDetailView.swift; sourceTree = "<group>"; };
+		6F56B5C72A52D5C300D7A000 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
+		6F56B5C92A52D86200D7A000 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		6F56B5CC2A53029800D7A000 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		6FB4A2A02A4DDD5700943CD4 /* LocalHoliday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalHoliday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB4A2A32A4DDD5700943CD4 /* LocalHolidayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHolidayApp.swift; sourceTree = "<group>"; };
 		6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,8 +111,17 @@
 				6F56B5BD2A51C72700D7A000 /* JobItem.swift */,
 				6F56B5BF2A51CA1300D7A000 /* PlayItem.swift */,
 				6F56B5C32A51CF5F00D7A000 /* Country.swift */,
+				6F56B5C92A52D86200D7A000 /* Review.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6F56B5CB2A53028D00D7A000 /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				6F56B5CC2A53029800D7A000 /* Square.swift */,
+			);
+			path = Shape;
 			sourceTree = "<group>";
 		};
 		6FB4A2972A4DDD5700943CD4 = {
@@ -165,6 +180,7 @@
 				6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */,
 				6F56B5B82A51944900D7A000 /* PlayItemView.swift */,
 				6F56B5AA2A51843500D7A000 /* JobItemView.swift */,
+				6F56B5C72A52D5C300D7A000 /* ReviewsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -197,6 +213,7 @@
 		6FB4A2D02A4E05A400943CD4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				6F56B5CB2A53028D00D7A000 /* Shape */,
 				6FB4A2D12A4E05B200943CD4 /* Constant */,
 				6FB4A2B52A4DFD3C00943CD4 /* Extension */,
 			);
@@ -308,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F56B5CD2A53029800D7A000 /* Square.swift in Sources */,
 				6FB4A2DB2A4E08C100943CD4 /* HomeView.swift in Sources */,
 				6F56B5BE2A51C72700D7A000 /* JobItem.swift in Sources */,
 				6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */,
@@ -331,7 +349,9 @@
 				6FB4A2D82A4E07DA00943CD4 /* IconView.swift in Sources */,
 				6F56B5B92A51944900D7A000 /* PlayItemView.swift in Sources */,
 				6FB4A2E72A51539D00943CD4 /* SquarePlayView.swift in Sources */,
+				6F56B5CA2A52D86200D7A000 /* Review.swift in Sources */,
 				6FB4A2BB2A4DFF2C00943CD4 /* Font+Extension.swift in Sources */,
+				6F56B5C82A52D5C300D7A000 /* ReviewsView.swift in Sources */,
 				6FB4A2B72A4DFD4A00943CD4 /* Color+Extension.swift in Sources */,
 				6F56B5C02A51CA1300D7A000 /* PlayItem.swift in Sources */,
 				6FB4A2DD2A4E0A0700943CD4 /* CountryGridView.swift in Sources */,

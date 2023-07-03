@@ -9,10 +9,12 @@ import SwiftUI
 
 struct JobItemDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var isAPICalled: Bool = false
     @Binding var jobItem: JobItem
+    @State private var reviews: [Review] = []
     var body: some View {
         GeometryReader { proxy in
-            ZStack(alignment: .bottom){
+            VStack{
                 ScrollView {
                     ZStack(alignment: .topLeading) {
                         VStack(alignment: .leading) {
@@ -65,6 +67,9 @@ struct JobItemDetailView: View {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: Size.XS)
                                 .foregroundColor(.gray100)
+                            
+                            ReviewsView(reviews: $reviews)
+                                .padding(Size.Inner)
                         }
                         Button {
                             dismiss()
@@ -95,6 +100,13 @@ struct JobItemDetailView: View {
                     .buttonStyle(.plain)
                 }
                 .padding(Size.M)
+                .background(Color.white)
+            }
+        }
+        .onAppear {
+            if !isAPICalled {
+                isAPICalled.toggle()
+                reviews = Review.defaultReviews
             }
         }
         .navigationTitle("")
@@ -104,6 +116,8 @@ struct JobItemDetailView: View {
 
 struct JobItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        JobItemDetailView(jobItem: .constant(.default))
+        NavigationStack {
+            JobItemDetailView(jobItem: .constant(.default))
+        }
     }
 }

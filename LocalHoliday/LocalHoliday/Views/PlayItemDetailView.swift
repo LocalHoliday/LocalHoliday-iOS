@@ -14,21 +14,19 @@ struct PlayItemDetailView: View {
     var body: some View {
         GeometryReader { proxy in
             VStack {
-                ScrollView {
-                    ZStack(alignment: .topLeading) {
-                        VStack(alignment: .leading) {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(.clear)
+                ZStack(alignment: .topLeading) {
+                    VStack(alignment: .leading) {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(height: proxy.size.width / 498 * 256)
+                            .background(
+                                ImageView(id: 0, imageName: "SampleJobItemImage_wide")
+                                    .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 498 * 256)
-                                    .background(
-                                        ImageView(id: 0, imageName: "SampleJobItemImage_wide")
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(height: proxy.size.width / 498 * 256)
-                                            .clipped()
-                                    )
-                            }
+                                    .clipped()
+                            )
                             .clipped()
+                        ScrollView {
                             VStack(alignment: .leading, spacing: Size.XS) {
                                 Text(playItem.title)
                                     .font(.H2SB)
@@ -51,8 +49,8 @@ struct PlayItemDetailView: View {
                             ReviewsView(reviews: $reviews, item: .constant(.playItem(playItem)))
                                 .padding(Size.Inner)
                         }
-                        BackButton(color: .white)
                     }
+                    BackButton(color: .white)
                 }
                 HStack {
                     ScrapButton(isScrapped: $playItem.isScrapped)

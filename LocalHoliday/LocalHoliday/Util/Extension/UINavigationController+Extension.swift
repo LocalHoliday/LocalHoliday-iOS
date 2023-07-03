@@ -4,7 +4,7 @@
 //
 //  Created by 정종인 on 2023/07/02.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
@@ -17,3 +17,4 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         return viewControllers.count > 1
     }
 }
+#endif

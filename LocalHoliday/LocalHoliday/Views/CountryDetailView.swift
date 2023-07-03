@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CountryDetailView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var playItems: [PlayItem] = []
     @State private var jobItems: [JobItem] = []
     @State private var selected: Int = 0
@@ -70,15 +69,8 @@ struct CountryDetailView: View {
                         .frame(maxWidth: .infinity)
                     }
                 }
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "arrow.backward")
-                        .renderingMode(.template)
-                        .foregroundColor(.white)
-                        .contentShape(Rectangle())
-                        .padding()
-                }
+                
+                BackButton(color: .white)
             }
         }
         .onAppear {

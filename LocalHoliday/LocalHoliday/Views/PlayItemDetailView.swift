@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PlayItemDetailView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var isAPICalled: Bool = false
     @Binding var playItem: PlayItem
     @State private var reviews: [Review] = []
@@ -49,18 +48,10 @@ struct PlayItemDetailView: View {
                                 .frame(maxWidth: .infinity, maxHeight: Size.XS)
                                 .foregroundColor(.gray100)
                             
-                            ReviewsView(reviews: $reviews)
+                            ReviewsView(reviews: $reviews, item: .constant(.playItem(playItem)))
                                 .padding(Size.Inner)
                         }
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "arrow.backward")
-                                .renderingMode(.template)
-                                .foregroundColor(.white)
-                                .contentShape(Rectangle())
-                                .padding()
-                        }
+                        BackButton(color: .white)
                     }
                 }
                 HStack {

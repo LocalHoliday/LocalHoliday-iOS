@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayItemView: View {
     @Binding var playItem: PlayItem
+    var isScrapButtonHidden = false
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
             ImageView(id: 0, imageName: "경기")
@@ -24,7 +25,9 @@ struct PlayItemView: View {
             }
             .frame(maxWidth: .infinity)
             
-            ScrapButton(isScrapped: $playItem.isScrapped)
+            if !isScrapButtonHidden {
+                ScrapButton(isScrapped: $playItem.isScrapped)
+            }
         }
     }
 }

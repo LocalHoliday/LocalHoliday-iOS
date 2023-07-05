@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var playItems: [PlayItem] = []
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
@@ -75,8 +76,14 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: Size.S) {
                         ForEach(0..<5) { index in
-                            SquarePlayView()
-                                .frame(width: UIScreen.main.bounds.width / 11 * 5)
+                            NavigationLink {
+                                PlayItemDetailView(playItem: .constant(.default))
+                            } label: {
+                                SquarePlayView()
+                                    .frame(width: UIScreen.main.bounds.width / 11 * 5)
+                            }
+                            .buttonStyle(.plain)
+                            
                         }
                     }
                     .padding(.horizontal, Size.Inner)

@@ -95,7 +95,7 @@ struct RecipeDetailView: View {
                     }
                 }
             }
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea(.top)
             
             BackButton(color: .white)
                 .blendMode(.exclusion)

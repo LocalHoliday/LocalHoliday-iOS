@@ -54,8 +54,13 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: Size.XL) {
                         ForEach(0..<5) { index in
-                            BookView()
-                                .frame(width: UIScreen.main.bounds.width / 2)
+                            NavigationLink {
+                                RecipeDetailView(jobItems: .constant(JobItem.defaultJobItems), playItems: .constant(PlayItem.defaultPlayItems))
+                            } label: {
+                                BookView()
+                                    .frame(width: UIScreen.main.bounds.width / 2)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal, Size.Inner)

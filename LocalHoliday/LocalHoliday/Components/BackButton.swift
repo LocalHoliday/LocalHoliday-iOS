@@ -18,6 +18,7 @@ struct BackButton: View {
             Image(systemName: "arrow.backward")
                 .renderingMode(.template)
                 .foregroundColor(color)
+                .shadow(radius: Size.M)
                 .contentShape(Rectangle())
                 .padding(padding)
         }

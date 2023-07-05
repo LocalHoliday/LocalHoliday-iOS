@@ -1,5 +1,5 @@
 //
-//  CardSlideView.swift
+//  PagingRecommendationView.swift
 //  LocalHoliday
 //
 //  Created by 정종인 on 2023/07/01.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardSlideView: View {
+struct PagingRecommendationView: View {
     var images = [
         ImageView(id: 0, imageName: "Firefly"),
         ImageView(id: 1, imageName: "Firefly"),
@@ -29,7 +29,6 @@ struct CardSlideView: View {
                         .padding(.bottom, 9)
                 }
                 .aspectRatio(1, contentMode: .fit)
-                .background(Color.gray100)
             }
             .cornerRadius(Radius.Small)
             
@@ -57,9 +56,9 @@ struct CardSlideView: View {
     }
 }
 
-struct CardSlideView_Previews: PreviewProvider {
+struct PagingRecommendationView_Previews: PreviewProvider {
     static var previews: some View {
-        CardSlideView()
+        PagingRecommendationView()
     }
 }
 

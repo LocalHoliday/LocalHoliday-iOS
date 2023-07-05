@@ -30,8 +30,19 @@ struct HomeView: View {
                 .padding(.vertical, Size.Outer)
                 
                 HStack(spacing: Size.Inner) {
-                    CardSlideView()
-                    CardSlideView()
+                    NavigationLink {
+                        RecommendationDetailView(jobItems: .constant(JobItem.defaultJobItems), playItems: .constant(PlayItem.defaultPlayItems))
+                    } label: {
+                        PagingRecommendationView()
+                    }
+                    .buttonStyle(.plain)
+                    
+                    NavigationLink {
+                        RecommendationDetailView(jobItems: .constant(JobItem.defaultJobItems), playItems: .constant(PlayItem.defaultPlayItems))
+                    } label: {
+                        PagingRecommendationView()
+                    }
+                    .buttonStyle(.plain)
                 }
                 .padding(.horizontal, Size.Inner)
                 

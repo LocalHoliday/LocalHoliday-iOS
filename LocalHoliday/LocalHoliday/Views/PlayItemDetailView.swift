@@ -34,9 +34,8 @@ struct PlayItemDetailView: View {
                                     .padding(.vertical, Size.Inner)
                                 
                                 Text(playItem.description)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .lineLimit(Int.max)
                                     .lineSpacing(Size.S)
+                                    .multilineTextAlignment(.leading)
                                     .font(.B2M)
                                     .foregroundColor(.black)
                             }

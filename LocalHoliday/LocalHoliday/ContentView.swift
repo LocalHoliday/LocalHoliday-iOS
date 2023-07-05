@@ -12,12 +12,12 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationStack {
-                HomeView()
+                ReservationView()
             }
             .tabItem {
                 Image.Reservation
                     .renderingMode(.template)
-                Text("예약하기")
+                Text("일정잡기")
                     .font(.B4R)
             }
             .tag(1)

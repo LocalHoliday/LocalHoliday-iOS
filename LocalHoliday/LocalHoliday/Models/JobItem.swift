@@ -18,6 +18,7 @@ struct JobItem: Hashable, Codable, Identifiable {
     var manager: String
     var phoneNumber: String
     var isScrapped: Bool
+    var isSelected: Bool
 }
 
 extension JobItem {
@@ -29,7 +30,8 @@ extension JobItem {
         endTime: "2023.07.08",
         manager: "이정민",
         phoneNumber: "010-1111-1111",
-        isScrapped: false
+        isScrapped: false,
+        isSelected: false
     )
     
     static let defaultJobItems: [JobItem] = (0..<5).map { index in
@@ -41,7 +43,8 @@ extension JobItem {
             endTime: "2023.07.08",
             manager: "이정민",
             phoneNumber: "010-1111-1111",
-            isScrapped: false
+            isScrapped: false,
+            isSelected: false
         )
     }
 }

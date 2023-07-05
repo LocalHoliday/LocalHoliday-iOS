@@ -14,6 +14,7 @@ struct PlayItem: Hashable, Codable, Identifiable {
     var location: String
     var description: String
     var isScrapped: Bool
+    var isSelected: Bool = false
 }
 
 extension PlayItem {

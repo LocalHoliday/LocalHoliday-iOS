@@ -53,6 +53,7 @@
 		6FB4A2E72A51539D00943CD4 /* SquarePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E62A51539D00943CD4 /* SquarePlayView.swift */; };
 		6FB4A2E92A5165BC00943CD4 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2E82A5165BC00943CD4 /* CountryDetailView.swift */; };
 		6FB4A2F12A5174B200943CD4 /* HorizontalSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A2F02A5174B200943CD4 /* HorizontalSelectView.swift */; };
+		6FCD44EF2A55D59000B0B1DB /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD44EE2A55D59000B0B1DB /* ReservationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		6FB4A2E62A51539D00943CD4 /* SquarePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarePlayView.swift; sourceTree = "<group>"; };
 		6FB4A2E82A5165BC00943CD4 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 		6FB4A2F02A5174B200943CD4 /* HorizontalSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSelectView.swift; sourceTree = "<group>"; };
+		6FCD44EE2A55D59000B0B1DB /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 				6F56B5CE2A531B6700D7A000 /* ReviewWritingView.swift */,
 				6F7BF06E2A5473FF001B05BF /* RecommendationDetailView.swift */,
 				6F8797152A55BBD100812C0F /* RecipeDetailView.swift */,
+				6FCD44EE2A55D59000B0B1DB /* ReservationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				6F56B5C22A51CD3100D7A000 /* ModelData.swift in Sources */,
 				6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */,
 				6FB4A2B42A4DDE3B00943CD4 /* SquarePicture.swift in Sources */,
+				6FCD44EF2A55D59000B0B1DB /* ReservationView.swift in Sources */,
 				6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */,
 				6FB4A2E92A5165BC00943CD4 /* CountryDetailView.swift in Sources */,
 				6FB4A2F12A5174B200943CD4 /* HorizontalSelectView.swift in Sources */,

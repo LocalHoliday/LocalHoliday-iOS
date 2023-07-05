@@ -168,13 +168,13 @@
 			isa = PBXGroup;
 			children = (
 				6FB4A2A32A4DDD5700943CD4 /* LocalHolidayApp.swift */,
+				6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */,
 				6F56B5BC2A51C70800D7A000 /* Models */,
 				6FB4A2D92A4E08B500943CD4 /* Views */,
 				6FB4A2D22A4E05E800943CD4 /* Resources */,
 				6FB4A2D02A4E05A400943CD4 /* Util */,
 				6FB4A2CF2A4E01EA00943CD4 /* Info.plist */,
 				6FB4A2B22A4DDDDE00943CD4 /* Components */,
-				6FB4A2A52A4DDD5700943CD4 /* ContentView.swift */,
 				6FB4A2A92A4DDD5800943CD4 /* LocalHoliday.entitlements */,
 				6FB4A2AA2A4DDD5800943CD4 /* Preview Content */,
 			);

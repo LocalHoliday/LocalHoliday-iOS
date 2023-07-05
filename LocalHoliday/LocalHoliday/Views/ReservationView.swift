@@ -68,11 +68,20 @@ struct ReservationView: View {
                                     .foregroundColor(.Primary)
                                     .buttonStyle(.plain)
                                     .padding(Size.XS)
+                                    
                                     JobItemView(jobItem: self.$modelData.pickedJobItems[index], isScrapButtonHidden: true)
                                         .frame(maxHeight: 100)
+                                    
+                                    Button {
+                                        self.modelData.pickedJobItems.remove(at: index)
+                                    } label: {
+                                        Image(systemName: "xmark")
+                                    }
+                                    .buttonStyle(.plain)
                                 }
                                 Divider()
                             }
+                            .animation(.spring(), value: self.modelData.pickedJobItems)
                         } else {
                             HStack {
                                 Button {
@@ -116,11 +125,20 @@ struct ReservationView: View {
                                     .foregroundColor(.Primary)
                                     .buttonStyle(.plain)
                                     .padding(Size.XS)
+                                    
                                     PlayItemView(playItem: self.$modelData.pickedPlayItems[index], isScrapButtonHidden: true)
                                         .frame(maxHeight: 100)
+                                    
+                                    Button {
+                                        self.modelData.pickedPlayItems.remove(at: index)
+                                    } label: {
+                                        Image(systemName: "xmark")
+                                    }
+                                    .buttonStyle(.plain)
                                 }
                                 Divider()
                             }
+                            .animation(.spring(), value: self.modelData.pickedPlayItems)
                         }
                     }
                     .padding(Size.Inner)
@@ -167,7 +185,7 @@ struct ReservationView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .padding(.top, Size.Inner)
+                    .padding(.vertical, Size.Inner)
                     
                 }
                 .frame(maxWidth: .infinity)
@@ -178,6 +196,7 @@ struct ReservationView: View {
                         endPoint: .center
                     )
                 )
+                .cornerRadius(Radius.Small)
             }
         }
         .navigationTitle("일정 잡기")

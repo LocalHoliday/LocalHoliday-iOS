@@ -22,11 +22,22 @@ struct ImageView: View {
 
 struct CircleImageView: View {
     var id: Int
-    var imageName: String
+    var image: Image
     var aspectRatio: CGFloat?
     
+    init(id: Int, imageName: String, aspectRatio: CGFloat? = nil) {
+        self.id = id
+        self.image = Image(imageName)
+        self.aspectRatio = aspectRatio
+    }
+    
+    init(id: Int, image: Image) {
+        self.id = id
+        self.image = image
+    }
+    
     var body: some View {
-        Image(imageName)
+        image
             .resizable()
             .aspectRatio(aspectRatio, contentMode: .fit)
             .clipShape(Circle())

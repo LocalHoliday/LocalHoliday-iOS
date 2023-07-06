@@ -24,4 +24,11 @@ extension Image {
     static let Mappin = Image("Mappin")
     static let CheckmarkFilled = Image("CheckmarkFilled")
     static let Time = Image("Time")
+    static let LogOut = Image("LogOut")
+    static let CalendarEdit = Image("CalendarEdit")
+    static let Bookmark = Image("Bookmark")
+    static let Scrap = Image("Scrap")
+    
+    // MARK: - Default
+    static let `defaultUser` = Image(systemName: "person").renderingMode(.template)
 }

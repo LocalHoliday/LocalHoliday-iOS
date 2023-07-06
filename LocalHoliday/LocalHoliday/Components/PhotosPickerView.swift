@@ -56,13 +56,13 @@ struct PhotosPickerView_Previews: PreviewProvider {
                                     .renderingMode(.original)
                                     .imageScale(.large)
                             }
-                            .offset(x: Size.XXXXL - Size.XS, y: -Size.XXXXL + Size.XS)
+                            .offset(x: Size.XXXXXL - Size.XS, y: -Size.XXXXXL + Size.XS)
                         }
-                        .frame(width: Size.XXXXL * 2, height: Size.XXXXL * 2)
+                        .frame(width: Size.XXXXXL * 2, height: Size.XXXXXL * 2)
                 } else {
                     PhotosPickerView(postedImage: $postedImage) {
                         RoundedRectangle(cornerRadius: Radius.Small)
-                            .frame(width: Size.XXXXL, height: Size.XXXXL)
+                            .frame(width: Size.XXXXXL, height: Size.XXXXXL)
                             .foregroundColor(.gray100)
                             .overlay {
                                 Image(systemName: "plus")

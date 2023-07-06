@@ -34,7 +34,7 @@ struct ContentView: View {
             .tag(2)
             
             NavigationStack {
-                HomeView()
+                MyPageView()
             }
             .tabItem {
                 Image.Person

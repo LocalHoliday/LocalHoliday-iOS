@@ -12,12 +12,20 @@ final class ModelData: ObservableObject {
     @Published var pickedJobItems: [JobItem] = []
     @Published var pickedPlayItems: [PlayItem] = []
     
+    var selectedJobItem: [JobItem] {
+        pickedJobItems.filter { $0.isSelected }
+    }
+    
+    var selectedPlayItem: [PlayItem] {
+        pickedPlayItems.filter { $0.isSelected }
+    }
+    
     var selectedJobItemCount: Int {
-        pickedJobItems.filter { $0.isSelected }.count
+        selectedJobItem.count
     }
     
     var selectedPlayItemCount: Int {
-        pickedPlayItems.filter { $0.isSelected }.count
+        selectedPlayItem.count
     }
     
     convenience init(pickedJobItems: [JobItem], pickedPlayItems: [PlayItem]) {
@@ -47,6 +55,25 @@ final class ModelData: ObservableObject {
     func enselectAllPlayItems() {
         for index in 0..<pickedPlayItems.count {
             pickedPlayItems[index].isSelected = true
+        }
+    }
+    
+    func deleteSelectedItems() {
+        let newJobItems = pickedJobItems.filter { !$0.isSelected }
+        let newPlayItems = pickedPlayItems.filter { !$0.isSelected }
+        pickedJobItems = newJobItems
+        pickedPlayItems = newPlayItems
+    }
+    
+    func addJobItem(_ item: JobItem) {
+        if !pickedJobItems.contains(item) {
+            pickedJobItems.append(item)
+        }
+    }
+    
+    func addPlayItem(_ item: PlayItem) {
+        if !pickedPlayItems.contains(item) {
+            pickedPlayItems.append(item)
         }
     }
 }

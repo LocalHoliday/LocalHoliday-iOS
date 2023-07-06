@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationStack {
-                ReservationView()
+                PickItemView()
             }
             .tabItem {
                 Image.Reservation

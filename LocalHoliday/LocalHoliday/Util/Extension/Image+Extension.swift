@@ -22,4 +22,6 @@ extension Image {
     static let Search = Image("Search")
     static let Star = Image("Star")
     static let Mappin = Image("Mappin")
+    static let CheckmarkFilled = Image("CheckmarkFilled")
+    static let Time = Image("Time")
 }

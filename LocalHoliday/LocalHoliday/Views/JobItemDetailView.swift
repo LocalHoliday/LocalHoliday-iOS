@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct JobItemDetailView: View {
+    @EnvironmentObject var modelData: ModelData
     @State private var isAPICalled: Bool = false
     @Binding var jobItem: JobItem
     @State private var reviews: [Review] = []
+    @State private var showingAlert = false
     var body: some View {
         GeometryReader { proxy in
             VStack {
@@ -77,6 +79,8 @@ struct JobItemDetailView: View {
                     ScrapButton(isScrapped: $jobItem.isScrapped)
                     Button {
                         print("일정에 추가하기 버튼")
+                        self.modelData.addJobItem(self.jobItem)
+                        showingAlert.toggle()
                     } label: {
                         ZStack(alignment: .center) {
                             Rectangle()
@@ -101,6 +105,10 @@ struct JobItemDetailView: View {
                 reviews = Review.defaultReviews
             }
         }
+        .alert("일정 추가 완료!", isPresented: $showingAlert, actions: {
+            Button("OK!", role: .cancel){}
+                .buttonStyle(.plain)
+        })
         .navigationTitle("")
         .toolbar(.hidden)
     }
@@ -110,6 +118,7 @@ struct JobItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             JobItemDetailView(jobItem: .constant(.default))
+                .environmentObject(ModelData())
         }
     }
 }

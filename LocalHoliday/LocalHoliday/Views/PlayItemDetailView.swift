@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct PlayItemDetailView: View {
+    @EnvironmentObject var modelData: ModelData
     @State private var isAPICalled: Bool = false
     @Binding var playItem: PlayItem
     @State private var reviews: [Review] = []
+    @State private var showingAlert = false
     var body: some View {
         GeometryReader { proxy in
             VStack {
@@ -55,6 +57,8 @@ struct PlayItemDetailView: View {
                     ScrapButton(isScrapped: $playItem.isScrapped)
                     Button {
                         print("일정에 추가하기 버튼")
+                        self.modelData.addPlayItem(self.playItem)
+                        showingAlert.toggle()
                     } label: {
                         ZStack(alignment: .center) {
                             Rectangle()
@@ -78,6 +82,10 @@ struct PlayItemDetailView: View {
                 reviews = Review.defaultReviews
             }
         }
+        .alert("일정 추가 완료!", isPresented: $showingAlert, actions: {
+            Button("OK!", role: .cancel){}
+                .buttonStyle(.plain)
+        })
         .navigationTitle("")
         .toolbar(.hidden)
     }
@@ -86,5 +94,6 @@ struct PlayItemDetailView: View {
 struct PlayItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlayItemDetailView(playItem: .constant(.default))
+            .environmentObject(ModelData())
     }
 }

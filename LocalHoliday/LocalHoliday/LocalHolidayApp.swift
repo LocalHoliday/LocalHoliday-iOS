@@ -13,6 +13,7 @@ struct LocalHolidayApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(ModelData())
+                .environmentObject(AuthData())
         }
     }
 }

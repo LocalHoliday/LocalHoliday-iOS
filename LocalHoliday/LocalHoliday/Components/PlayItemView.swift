@@ -13,7 +13,7 @@ struct PlayItemView: View {
     var isScrapButtonHidden = false
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
-            ImageView(id: 0, imageName: "경기")
+            ImageView(imageName: "경기")
             
             VStack(alignment: .leading, spacing: Size.XS) {
                 HStack {

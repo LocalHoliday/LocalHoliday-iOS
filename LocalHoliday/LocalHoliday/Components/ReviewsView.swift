@@ -31,12 +31,12 @@ struct ReviewsView: View {
             ForEach(reviews, id: \.id) { review in
                 VStack(alignment: .leading, spacing: Size.Inner) {
                     HStack {
-                        CircleImageView(id: review.user.id, imageName: "경기")
+                        CircleImageView(imageName: "경기")
                             .frame(maxHeight: Size.XXL)
                         Text(review.user.nickname)
                             .font(.B2M)
                     }
-                    ImageView(id: review.id, imageName: "SampleReviewImage")
+                    ImageView(imageName: "SampleReviewImage")
                         .aspectRatio(contentMode: .fill)
                         .frame(maxHeight: Size.ImageMaxHeight)
                         .clipped()

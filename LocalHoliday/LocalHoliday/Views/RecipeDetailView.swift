@@ -23,7 +23,7 @@ struct RecipeDetailView: View {
                                 .blur(radius: Size.L)
                             
                             VStack {
-                                ImageView(id: 0, imageName: "SampleBookImage")
+                                ImageView(imageName: "SampleBookImage")
                                     .aspectRatio(contentMode: .fill)
                                     .frame(maxWidth: proxy.size.width / 3 * 2, maxHeight: proxy.size.height / 2)
                                     .cornerRadius(Radius.Small)

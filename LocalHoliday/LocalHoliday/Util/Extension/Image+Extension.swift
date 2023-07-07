@@ -14,6 +14,10 @@ extension Image {
     static let LocalHoliday = Image("LocalHoliday")
     static let Splash = Image("Splash")
     static let Firefly = Image("Firefly")
+    static let Onboarding1 = Image("Onboarding1")
+    static let Onboarding2 = Image("Onboarding2")
+    static let Onboarding3 = Image("Onboarding3")
+    static let Onboarding4 = Image("Onboarding4")
 
     // MARK: - ICON
     static let Home = Image("Home")

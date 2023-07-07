@@ -12,9 +12,12 @@ struct LocalHolidayApp: App {
     var body: some Scene {
         WindowGroup {
 //            LoginView()
-            ContentView()
-                .environmentObject(ModelData())
-                .environmentObject(AuthData())
+//            ContentView()
+//                .environmentObject(ModelData())
+//                .environmentObject(AuthData())
+            NavigationStack {
+                SignUpManageView()
+            }
         }
     }
 }

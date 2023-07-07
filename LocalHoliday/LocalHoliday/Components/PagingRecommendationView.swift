@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PagingRecommendationView: View {
     var images = [
-        ImageView(id: 0, imageName: "Firefly"),
-        ImageView(id: 1, imageName: "Firefly"),
-        ImageView(id: 2, imageName: "Firefly")
+        ImageView(imageName: "Firefly"),
+        ImageView(imageName: "Firefly"),
+        ImageView(imageName: "Firefly")
     ]
     @State private var currentPage = 0
     var body: some View {
@@ -19,8 +19,8 @@ struct PagingRecommendationView: View {
             ZStack(alignment: .topTrailing) {
                 ZStack(alignment: .bottom) {
                     TabView(selection: $currentPage) {
-                        ForEach(images, id: \.id) { imageView in
-                            imageView
+                        ForEach(0..<3) { index in
+                            images[index]
                         }
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -65,11 +65,16 @@ struct PagingRecommendationView_Previews: PreviewProvider {
 struct PageControl: UIViewRepresentable {
     var numberOfPages: Int
     @Binding var currentPage: Int
+    var color: Color?
     
     func makeUIView(context: Context) -> UIPageControl {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = numberOfPages
         pageControl.currentPage = currentPage
+        if let color {
+            pageControl.currentPageIndicatorTintColor = UIColor(color)
+            pageControl.pageIndicatorTintColor = UIColor(Color.gray100)
+        }
         pageControl.addTarget(
             context.coordinator,
             action: #selector(Coordinator.updateCurrentPage(sender:)),

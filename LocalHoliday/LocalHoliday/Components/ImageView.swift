@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ImageView: View {
-    var id: Int
     var imageName: String
     var aspectRatio: CGFloat?
     
@@ -16,23 +15,19 @@ struct ImageView: View {
         Image(imageName)
             .resizable()
             .aspectRatio(aspectRatio, contentMode: .fit)
-            .tag(id)
     }
 }
 
 struct CircleImageView: View {
-    var id: Int
     var image: Image
     var aspectRatio: CGFloat?
     
-    init(id: Int, imageName: String, aspectRatio: CGFloat? = nil) {
-        self.id = id
+    init(imageName: String, aspectRatio: CGFloat? = nil) {
         self.image = Image(imageName)
         self.aspectRatio = aspectRatio
     }
     
-    init(id: Int, image: Image) {
-        self.id = id
+    init(image: Image) {
         self.image = image
     }
     
@@ -41,12 +36,10 @@ struct CircleImageView: View {
             .resizable()
             .aspectRatio(aspectRatio, contentMode: .fit)
             .clipShape(Circle())
-            .tag(id)
     }
 }
 
 struct SquareImageView: View {
-    var id: Int
     var imageName: String
     var aspectRatio: CGFloat?
 
@@ -58,14 +51,12 @@ struct SquareImageView: View {
                     .resizable()
                     .aspectRatio(aspectRatio, contentMode: .fill)
                     .background(Color.gray100)
-                    .tag(id)
             )
             .clipped()
     }
 }
 
 struct RoundedSquareImageView: View {
-    var id: Int
     var imageName: String
     var aspectRatio: CGFloat?
     var radius: CGFloat
@@ -78,7 +69,6 @@ struct RoundedSquareImageView: View {
                     .resizable()
                     .aspectRatio(aspectRatio, contentMode: .fill)
                     .background(Color.gray100)
-                    .tag(id)
             )
             .clipped()
             .cornerRadius(radius)
@@ -87,24 +77,24 @@ struct RoundedSquareImageView: View {
 
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageView(id: 9, imageName: "SampleJobItemImage_wide")
+        ImageView(imageName: "SampleJobItemImage_wide")
     }
 }
 
 struct CircleImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImageView(id: 9, imageName: "SampleBookImage")
+        CircleImageView(imageName: "SampleBookImage")
     }
 }
 
 struct SquareImageView_Previews: PreviewProvider {
     static var previews: some View {
-        SquareImageView(id: 9, imageName: "SampleJobItemImage_wide")
+        SquareImageView(imageName: "SampleJobItemImage_wide")
     }
 }
 
 struct RoundedSquareImageView_Previews: PreviewProvider {
     static var previews: some View {
-        RoundedSquareImageView(id: 9, imageName: "SampleJobItemImage_wide", radius: Radius.Small)
+        RoundedSquareImageView(imageName: "SampleJobItemImage_wide", radius: Radius.Small)
     }
 }

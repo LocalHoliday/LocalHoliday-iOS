@@ -10,7 +10,7 @@ import SwiftUI
 struct BookView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
-            ImageView(id: 0, imageName: "SampleBookImage", aspectRatio: 1/1.618)
+            ImageView(imageName: "SampleBookImage", aspectRatio: 1/1.618)
             
             VStack(alignment: .leading) {
                 Text("두근두근 전주에서의 로컬 홀리데이")

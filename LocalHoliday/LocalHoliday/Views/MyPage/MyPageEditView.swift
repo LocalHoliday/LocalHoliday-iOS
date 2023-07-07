@@ -21,7 +21,7 @@ struct MyPageEditView: View {
                 HStack {
                     PhotosPickerView(postedImage: $postedImage) {
                         ZStack {
-                            CircleImageView(id: 0, image: postedImage ?? .defaultUser)
+                            CircleImageView(image: postedImage ?? .defaultUser)
                                 .frame(width: Size.XXXXL)
                                 .shadow(radius: 5)
 
@@ -88,12 +88,12 @@ struct MyPageEditView: View {
                         
                         HStack(alignment: .bottom) {
                             VStack(alignment: .leading) {
-                                Text(self.authData.user.location)
+                                Text(self.authData.user.address)
                                     .font(.B2M)
                                 Divider()
                             }
                             NavigationLink {
-                                WebView(delegate: WebViewDelegate(address: $authData.user.location, isLoading: $isWebViewLoading))
+                                PostalCodeWebView(delegate: WebViewDelegate(address: $authData.user.address, isLoading: $isWebViewLoading))
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 RoundedRectangle(cornerRadius: Radius.Small)
@@ -144,7 +144,7 @@ struct MyPageEditView: View {
                         
                         HStack(alignment: .bottom) {
                             VStack(alignment: .leading) {
-                                Text(self.authData.user.location)
+                                Text(self.authData.user.address)
                                     .font(.B2M)
                                 Divider()
                             }
@@ -183,72 +183,5 @@ struct MyPageEditView_Previews: PreviewProvider {
             MyPageEditView()
                 .environmentObject(AuthData())
         }
-    }
-}
-
-import WebKit
-import Combine
-
-
-struct WebView: UIViewRepresentable {
-    @Environment(\.dismiss) private var dismiss
-    let urlString: String = "https://chongin12.github.io/Kakao_Postcode/"
-    let delegate: WebViewDelegate
-    
-    func makeUIView(context: Context) -> WKWebView {
-        let contentController = WKUserContentController()
-        contentController.add(context.coordinator, name: "callBackHandler")
-        let configuration = WKWebViewConfiguration()
-        configuration.userContentController = contentController
-        let webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.navigationDelegate = context.coordinator
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
-        return webView
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {}
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(delegate: delegate, dismiss: dismiss)
-    }
-    
-    class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
-        
-        let delegate: WebViewDelegate
-        let dismiss: DismissAction
-        
-        init(delegate: WebViewDelegate, dismiss: DismissAction) {
-            self.delegate = delegate
-            self.dismiss = dismiss
-        }
-        
-        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-            delegate.isLoading = true
-        }
-        
-        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            delegate.isLoading = false
-        }
-        
-        func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-            if let data = message.body as? [String: Any] {
-                delegate.address = data["roadAddress"] as? String ?? ""
-            }
-            dismiss()
-        }
-    }
-}
-
-class WebViewDelegate: ObservableObject {
-    @Binding var address: String
-    @Binding var isLoading: Bool
-    
-    init(address: Binding<String>, isLoading: Binding<Bool>) {
-        self._address = address
-        self._isLoading = isLoading
     }
 }

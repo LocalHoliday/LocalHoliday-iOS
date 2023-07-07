@@ -19,7 +19,7 @@ struct RecommendationDetailView: View {
                         .frame(height: 345)
                         .background(.black.opacity(0.4))
                         .background(
-                            SquareImageView(id: 0, imageName: "SampleReviewImage")
+                            SquareImageView(imageName: "SampleReviewImage")
                                 .aspectRatio(contentMode: .fill)
                                 .clipped()
                         )

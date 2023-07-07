@@ -22,7 +22,7 @@ struct PlayItemDetailView: View {
                             .foregroundColor(.clear)
                             .frame(height: proxy.size.width / 498 * 256)
                             .background(
-                                ImageView(id: 0, imageName: "SampleJobItemImage_wide")
+                                ImageView(imageName: "SampleJobItemImage_wide")
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 498 * 256)
                                     .clipped()

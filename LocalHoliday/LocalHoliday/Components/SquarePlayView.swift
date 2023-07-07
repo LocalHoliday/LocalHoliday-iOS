@@ -10,7 +10,7 @@ import SwiftUI
 struct SquarePlayView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            ImageView(id: 0, imageName: "SamplePlayImage", aspectRatio: 1)
+            ImageView(imageName: "SamplePlayImage", aspectRatio: 1)
             
             Text("가게 해변")
                 .font(.B1M)

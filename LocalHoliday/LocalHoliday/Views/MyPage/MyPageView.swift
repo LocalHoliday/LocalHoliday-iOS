@@ -19,7 +19,7 @@ struct MyPageView: View {
                             .stroke(Color.gray100)
                         
                         HStack {
-                            CircleImageView(id: 0, imageName: "경기")
+                            CircleImageView(imageName: "경기")
                                 .shadow(radius: 5)
                                 .padding(Size.Inner)
                             
@@ -50,21 +50,32 @@ struct MyPageView: View {
                         }
                     }
 
-                    
-                    HStack(spacing: Size.XL) {
-                        Image.CalendarEdit
-                        Text("일정확인")
+                    NavigationLink {
+                        MyPageCheckScheduleView()
+                    } label: {
+                        HStack(spacing: Size.XL) {
+                            Image.CalendarEdit
+                            Text("일정확인")
+                        }
+                    }
+
+                    NavigationLink {
+                        MyPageRecipesView()
+                    } label: {
+                        HStack(spacing: Size.XL) {
+                            Image.Bookmark
+                            Text("로컬 홀리데이북")
+                        }
                     }
                     
-                    HStack(spacing: Size.XL) {
-                        Image.Bookmark
-                        Text("로컬 홀리데이북")
-                    }
-                    
-                    HStack(spacing: Size.XL) {
-                        Image.LogOut
-                        Text("로그아웃")
-                    }
+                    Button {
+                        print("로그아웃!!")
+                    } label: {
+                        HStack(spacing: Size.XL) {
+                            Image.LogOut
+                            Text("로그아웃")
+                        }
+                    }                    
                 }
                 .font(.B2M)
                 .padding(Size.Inner)

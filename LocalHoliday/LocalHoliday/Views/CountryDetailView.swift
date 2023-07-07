@@ -24,7 +24,7 @@ struct CountryDetailView: View {
                             .frame(height: proxy.size.width / 390 * 158)
                             .background(.black.opacity(0.4))
                             .background(
-                                ImageView(id: 0, imageName: "\(country.title)_wide")
+                                ImageView(imageName: "\(country.title)_wide")
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 390 * 158)
                                     .clipped()

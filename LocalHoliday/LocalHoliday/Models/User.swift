@@ -7,15 +7,17 @@
 
 import Foundation
 
-struct User: Hashable, Codable, Identifiable {
-    var id: Int
+struct User: Hashable, Codable {
+    var uuid: String
     var name: String
     var imageURL: String?
     var phoneNumber: String
     var nickname: String
-    var location: String
+    var address: String
+    var email: String
 }
 
 extension User {
-    static let `default` = User(id: 0, name: "이정민", phoneNumber: "01012341234", nickname: "블랑사랑에디", location: "서울시 동작구 상도로")
+    static let `default` = User(uuid: "asdf", name: "이정민", phoneNumber: "01012341234", nickname: "블랑사랑에디", address: "서울시 동작구 상도로", email: "aaa@localholiday.com")
+    static let empty = User(uuid: "", name: "", phoneNumber: "", nickname: "", address: "", email: "")
 }

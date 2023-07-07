@@ -41,10 +41,15 @@ struct MyPageView: View {
                 .buttonStyle(.plain)
                 
                 Group {
-                    HStack(spacing: Size.XL) {
-                        Image.Scrap
-                        Text("스크랩")
+                    NavigationLink {
+                        MyPageScrapView()
+                    } label: {
+                        HStack(spacing: Size.XL) {
+                            Image.Scrap
+                            Text("스크랩")
+                        }
                     }
+
                     
                     HStack(spacing: Size.XL) {
                         Image.CalendarEdit

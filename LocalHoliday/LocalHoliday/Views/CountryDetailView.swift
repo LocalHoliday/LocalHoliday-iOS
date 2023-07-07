@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CountryDetailView: View {
+    @EnvironmentObject var modelData: ModelData
     @State private var playItems: [PlayItem] = []
     @State private var jobItems: [JobItem] = []
     @State private var selected: Int = 0
@@ -79,6 +80,12 @@ struct CountryDetailView: View {
                 playItems = PlayItem.defaultPlayItems
                 jobItems = JobItem.defaultJobItems
             }
+            for i in 0..<playItems.count {
+                playItems[i].isScrapped = modelData.isContained(playItems[i])
+            }
+            for i in 0..<jobItems.count {
+                jobItems[i].isScrapped = modelData.isContained(jobItems[i])
+            }
         }
         .navigationTitle("")
         .toolbar(.hidden)
@@ -89,6 +96,7 @@ struct CountryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             CountryDetailView(country: .default)
+                .environmentObject(ModelData())
         }
     }
 }

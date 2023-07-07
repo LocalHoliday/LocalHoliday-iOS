@@ -11,6 +11,7 @@ import SwiftUI
 struct LocalHolidayApp: App {
     var body: some Scene {
         WindowGroup {
+//            LoginView()
             ContentView()
                 .environmentObject(ModelData())
                 .environmentObject(AuthData())

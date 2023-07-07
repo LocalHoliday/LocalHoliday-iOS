@@ -77,6 +77,13 @@ struct JobItemDetailView: View {
                 }
                 HStack {
                     ScrapButton(isScrapped: $jobItem.isScrapped)
+                        .onChange(of: jobItem.isScrapped) { newValue in
+                            if newValue {
+                                modelData.scrapJobItem(jobItem)
+                            } else {
+                                modelData.unscrapJobItem(jobItem)
+                            }
+                        }
                     Button {
                         print("일정에 추가하기 버튼")
                         self.modelData.addJobItem(self.jobItem)
@@ -104,6 +111,7 @@ struct JobItemDetailView: View {
                 isAPICalled.toggle()
                 reviews = Review.defaultReviews
             }
+            jobItem.isScrapped = modelData.isContained(jobItem)
         }
         .alert("일정 추가 완료!", isPresented: $showingAlert, actions: {
             Button("OK!", role: .cancel){}

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct JobItemView: View {
+    @EnvironmentObject var modelData: ModelData
     @Binding var jobItem: JobItem
     var isScrapButtonHidden = false
     var body: some View {
@@ -40,6 +41,13 @@ struct JobItemView: View {
             
             if !isScrapButtonHidden {
                 ScrapButton(isScrapped: $jobItem.isScrapped)
+                    .onChange(of: jobItem.isScrapped) { newValue in
+                        if newValue {
+                            modelData.scrapJobItem(jobItem)
+                        } else {
+                            modelData.unscrapJobItem(jobItem)
+                        }
+                    }
             }
         }
     }
@@ -48,5 +56,6 @@ struct JobItemView: View {
 struct JobItemView_Previews: PreviewProvider {
     static var previews: some View {
         JobItemView(jobItem: .constant(.default))
+            .environmentObject(ModelData())
     }
 }

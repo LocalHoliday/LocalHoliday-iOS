@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlayItemView: View {
+    @EnvironmentObject var modelData: ModelData
     @Binding var playItem: PlayItem
     var isScrapButtonHidden = false
     var body: some View {
@@ -27,6 +28,13 @@ struct PlayItemView: View {
             
             if !isScrapButtonHidden {
                 ScrapButton(isScrapped: $playItem.isScrapped)
+                    .onChange(of: playItem.isScrapped) { newValue in
+                        if newValue {
+                            modelData.scrapPlayItem(playItem)
+                        } else {
+                            modelData.unscrapPlayItem(playItem)
+                        }
+                    }
             }
         }
     }
@@ -36,5 +44,6 @@ struct PlayItemView_Previews: PreviewProvider {
     static var previews: some View {
         let item = PlayItem.default
         PlayItemView(playItem: .constant(item))
+            .environmentObject(ModelData())
     }
 }

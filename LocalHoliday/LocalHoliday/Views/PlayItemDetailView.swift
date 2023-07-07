@@ -55,6 +55,13 @@ struct PlayItemDetailView: View {
                 }
                 HStack {
                     ScrapButton(isScrapped: $playItem.isScrapped)
+                        .onChange(of: playItem.isScrapped) { newValue in
+                            if newValue {
+                                modelData.scrapPlayItem(playItem)
+                            } else {
+                                modelData.unscrapPlayItem(playItem)
+                            }
+                        }
                     Button {
                         print("일정에 추가하기 버튼")
                         self.modelData.addPlayItem(self.playItem)
@@ -81,6 +88,7 @@ struct PlayItemDetailView: View {
                 isAPICalled.toggle()
                 reviews = Review.defaultReviews
             }
+            playItem.isScrapped = modelData.isContained(playItem)
         }
         .alert("일정 추가 완료!", isPresented: $showingAlert, actions: {
             Button("OK!", role: .cancel){}

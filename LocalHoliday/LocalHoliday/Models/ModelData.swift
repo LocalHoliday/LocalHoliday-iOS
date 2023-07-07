@@ -11,6 +11,8 @@ final class ModelData: ObservableObject {
     @Published var countries: [Country] = Country.defaultCountries
     @Published var pickedJobItems: [JobItem] = []
     @Published var pickedPlayItems: [PlayItem] = []
+    @Published var scrappedJobItems: [JobItem] = []
+    @Published var scrappedPlayItems: [PlayItem] = []
     
     var selectedJobItem: [JobItem] {
         pickedJobItems.filter { $0.isSelected }
@@ -32,6 +34,20 @@ final class ModelData: ObservableObject {
         self.init()
         self.pickedJobItems = pickedJobItems
         self.pickedPlayItems = pickedPlayItems
+    }
+    
+    convenience init(scrappedJobItems: [JobItem], scrappedPlayItems: [PlayItem]) {
+        self.init()
+        self.scrappedJobItems = scrappedJobItems
+        self.scrappedPlayItems = scrappedPlayItems
+        
+        for i in 0..<self.scrappedJobItems.count {
+            self.scrappedJobItems[i].isScrapped = true
+        }
+        
+        for i in 0..<self.scrappedPlayItems.count {
+            self.scrappedPlayItems[i].isScrapped = true
+        }
     }
     
     func deselectAllJobItems() {
@@ -75,5 +91,41 @@ final class ModelData: ObservableObject {
         if !pickedPlayItems.contains(item) {
             pickedPlayItems.append(item)
         }
+    }
+    
+    func scrapJobItem(_ item: JobItem) {
+        if !scrappedJobItems.contains(item) {
+            scrappedJobItems.append(item)
+        }
+    }
+    
+    func scrapPlayItem(_ item: PlayItem) {
+        if !scrappedPlayItems.contains(item) {
+            scrappedPlayItems.append(item)
+        }
+    }
+    
+    func unscrapJobItem(_ item: JobItem) {
+        if let index = scrappedJobItems.firstIndex(of: item) {
+            scrappedJobItems.removeFirst(index)
+        }
+    }
+    
+    func unscrapPlayItem(_ item: PlayItem) {
+        print("before unscrap : \(scrappedPlayItems)")
+        print("item : \(item)")
+        print("item == scrapped[0] => \(item == scrappedPlayItems[0])")
+        if let index = scrappedPlayItems.firstIndex(of: item) {
+            scrappedPlayItems.remove(at: index)
+        }
+        print("after unscrap : \(scrappedPlayItems)")
+    }
+    
+    func isContained(_ item: JobItem) -> Bool {
+        scrappedJobItems.contains(item)
+    }
+    
+    func isContained(_ item: PlayItem) -> Bool {
+        scrappedPlayItems.contains(item)
     }
 }

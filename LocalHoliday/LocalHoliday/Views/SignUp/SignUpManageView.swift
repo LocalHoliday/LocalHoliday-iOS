@@ -34,6 +34,18 @@ struct SignUpManageView: View {
                 dismiss()
             }
         }
+        .navigationTitle("")
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    dismiss()
+                } label: {
+                    Text("닫기")
+                }
+
+            }
+        }
     }
 }
 

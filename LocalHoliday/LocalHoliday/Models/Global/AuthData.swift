@@ -8,5 +8,6 @@
 import Foundation
 
 final class AuthData: ObservableObject {
+    @Published var loginInfo: Info? = nil
     @Published var user: User = .default
 }

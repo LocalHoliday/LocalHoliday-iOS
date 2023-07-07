@@ -40,8 +40,8 @@ struct OnboardingView: View {
                     .padding(.vertical, Size.Inner)
                 
                 
-                RoundedRectangleButton(text: "회원가입 하기") {
-                    phase += 1
+                RoundedRectangleButton(text: currentPage == 2 ? "회원가입 하기" : "다음") {
+                    if currentPage == 2 { phase += 1 } else { currentPage += 1 }
                 }
                 .padding(Size.Inner)
             }

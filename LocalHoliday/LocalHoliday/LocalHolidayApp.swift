@@ -15,9 +15,8 @@ struct LocalHolidayApp: App {
 //            ContentView()
 //                .environmentObject(ModelData())
 //                .environmentObject(AuthData())
-            NavigationStack {
-                SignUpManageView()
-            }
+            LoginOrSignUpView()
+                .environmentObject(AuthData())
         }
     }
 }

@@ -30,7 +30,7 @@ struct SignUpManageView: View {
         }
         .animation(.spring(), value: phase)
         .onChange(of: phase) { newValue in
-            if newValue == 9 {
+            if newValue == 10 {
                 dismiss()
             }
         }

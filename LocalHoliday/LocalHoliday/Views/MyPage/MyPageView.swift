@@ -79,6 +79,7 @@ struct MyPageView: View {
                 }
                 .font(.B2M)
                 .padding(Size.Inner)
+                .buttonStyle(.plain)
             }
         }
         .navigationTitle("내 정보")

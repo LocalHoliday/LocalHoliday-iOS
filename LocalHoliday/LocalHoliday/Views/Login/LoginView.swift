@@ -10,45 +10,66 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var authData: AuthData
     @State private var loginCredentials: LoginCredentials = LoginCredentials(email: "", password: "")
-    let repository = DefaultAuthRepository()
-//    init() {
-//
-//    }
+    @State private var isLoading = false
     var body: some View {
-        VStack(spacing: Size.Outer) {
-            Image.LocalHoliday
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-            TextField("이메일을 입력해주세요", text: $loginCredentials.email)
-                .textFieldStyle(.roundedBorder)
-                .font(.B2R)
-            
-            SecureField("비밀번호를 입력해주세요", text: $loginCredentials.password)
-                .textFieldStyle(.roundedBorder)
-                .font(.B2R)
-            
-            Spacer()
-            
-            RoundedRectangleButton(text: "로그인") {
-                repository.login(LoginCredentials(email: loginCredentials.email, password: loginCredentials.password))
-                    .sink { completion in
-                        switch completion {
-                        case .failure(let error):
-                            print("error! : \(error.localizedDescription)")
-                        case .finished:
-                            print("finished!")
+        GeometryReader { proxy in
+            VStack(spacing: Size.Inner) {
+                Image.LocalHoliday
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                Spacer()
+                
+                TextField("이메일을 입력해주세요", text: $loginCredentials.email)
+                    .textFieldStyle(.plain)
+                    .padding(Size.M)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: Radius.Small)
+                            .stroke(Color.gray500, lineWidth: 1)
+                    )
+                    .keyboardType(.emailAddress)
+                    .font(.B1R)
+                
+                SecureField("비밀번호를 입력해주세요", text: $loginCredentials.password)
+                    .textFieldStyle(.plain)
+                    .padding(Size.M)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: Radius.Small)
+                            .stroke(Color.gray500, lineWidth: 1)
+                    )
+                    .font(.B1R)
+                    .padding(.top, Size.Inner)
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                
+                RoundedRectangleButton(text: "로그인") {
+                    isLoading = true
+                    authData.repository.login(loginCredentials)
+                        .prefix(1)
+                        .sink { completion in
+                            defer {
+                                isLoading = false
+                            }
+                            switch completion {
+                            case .failure(let error):
+                                print("error! : \(error.localizedDescription)")
+                            case .finished:
+                                print("finished!")
+                            }
+                        } receiveValue: { result in
+                            print("result : \(result)")
+                            authData.loginInfo = result
                         }
-                    } receiveValue: { result in
-                        print("result : \(result)")
-                        authData.loginInfo = result
-                    }
-                    .store(in: &repository.cancellables)
+                        .store(in: &authData.repository.cancellables)
+                }
+                .disabled(isLoading)
             }
-            
-            Spacer()
+            .padding(.horizontal, Size.Outer)
         }
-        .padding(Size.Outer)
+        .tapToHideKeyboard()
 
 //        VStack {
 //            if let info {
@@ -148,10 +169,6 @@ struct LoginView: View {
         }
         task.resume()
     }
-}
-
-struct Info: Codable {
-    var token: String?
 }
 
 struct In: Codable {

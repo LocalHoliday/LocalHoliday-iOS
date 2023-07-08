@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct SignUpFinishView: View {
+    @Binding var nickname: String
     @Binding var phase: Int
     var body: some View {
         VStack(alignment: .leading, spacing: Size.Outer * 2) {
             Group {
                 Text("반가워요 ")
-                + Text("블랑사랑에디")
+                + Text(nickname)
                     .foregroundColor(.Primary)
                 + Text("님!")
             }
@@ -32,12 +33,11 @@ struct SignUpFinishView: View {
             }
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 
 struct SignUpFinishView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpFinishView(phase: .constant(0))
+        SignUpFinishView(nickname: .constant("블랑사랑에디"), phase: .constant(0))
     }
 }

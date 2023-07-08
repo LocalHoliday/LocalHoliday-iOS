@@ -45,7 +45,6 @@ struct SignUp5View: View {
             .disabled(!isConformed)
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

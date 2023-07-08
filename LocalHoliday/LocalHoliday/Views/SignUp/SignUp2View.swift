@@ -30,7 +30,6 @@ struct SignUp2View: View {
             .disabled(phoneNumber == "")
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

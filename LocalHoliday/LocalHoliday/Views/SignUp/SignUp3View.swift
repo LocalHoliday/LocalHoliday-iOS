@@ -47,7 +47,6 @@ struct SignUp3View: View {
             .disabled(address == "")
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

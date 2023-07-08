@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SignUpManageView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authData: AuthData
     @State private var phase: Int = 0
-    @State private var user: User = User.empty
-    @State private var password: String = ""
+    @State private var user: SignUpVO = .empty
+    @State private var token: TokenResponseDTO?
     var body: some View {
         VStack {
             switch phase {
@@ -22,15 +23,34 @@ struct SignUpManageView: View {
             case 4: SignUp2View(phoneNumber: $user.phoneNumber, phase: $phase)
             case 5: SignUp3View(address: $user.address, phase: $phase)
             case 6: SignUp4View(email: $user.email, phase: $phase)
-            case 7: SignUp5View(password: $password, phase: $phase)
+            case 7: SignUp5View(password: $user.password, phase: $phase)
             case 8: SignUp6View(nickname: $user.nickname, phase: $phase)
-            case 9: SignUpFinishView(phase: $phase)
-            default: EmptyView()
+            case 9: ProgressView()
+            case 10: SignUpFinishView(nickname: $user.nickname, phase: $phase)
+            case 11: EmptyView()
+            default: ErrorView()
             }
         }
         .animation(.spring(), value: phase)
         .onChange(of: phase) { newValue in
-            if newValue == 10 {
+            if newValue == 9 {
+                authData.repository.signUp(user)
+                    .prefix(1)
+                    .sink { completion in
+                        switch completion {
+                        case .failure(let error):
+                            print("error! : \(error.localizedDescription)")
+                            phase += 999
+                        case .finished:
+                            print("finished!")
+                        }
+                    } receiveValue: { result in
+                        print("result : \(result)")
+                        token = result
+                        phase += 1
+                    }
+                    .store(in: &authData.repository.cancellables)
+            } else if newValue == 11 {
                 dismiss()
             }
         }
@@ -46,6 +66,7 @@ struct SignUpManageView: View {
 
             }
         }
+        .tapToHideKeyboard()
     }
 }
 

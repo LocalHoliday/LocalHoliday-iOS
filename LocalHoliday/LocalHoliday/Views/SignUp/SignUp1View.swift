@@ -11,25 +11,26 @@ struct SignUp1View: View {
     @Binding var name: String
     @Binding var phase: Int
     var body: some View {
-        VStack(alignment: .leading, spacing: Size.Outer * 2) {
-            Text("이름을 입력해주세요")
-                .font(.H2SB)
-            
-            VStack {
-                TextField("이름", text: $name)
-                    .font(.H4M)
-                Divider()
+        GeometryReader { proxy in
+            VStack(alignment: .leading, spacing: Size.Outer * 2) {
+                Text("이름을 입력해주세요")
+                    .font(.H2SB)
+                
+                VStack {
+                    TextField("이름", text: $name)
+                        .font(.H4M)
+                    Divider()
+                }
+                
+                Spacer()
+                
+                RoundedRectangleButton(text: "다음") {
+                    phase += 1
+                }
+                .disabled(name == "")
             }
-            
-            Spacer()
-            
-            RoundedRectangleButton(text: "다음") {
-                phase += 1
-            }
-            .disabled(name == "")
+            .padding(Size.Inner)
         }
-        .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol AuthRepository {
-    func login(_ info: LoginCredentials) -> AnyPublisher<Info, Error>
+    func login(_ info: LoginCredentials) -> AnyPublisher<TokenResponseDTO, Error>
+    func signUp(_ info: SignUpVO) -> AnyPublisher<TokenResponseDTO, Error>
 }
 
 class BaseAuthRepository {
@@ -18,7 +19,10 @@ class BaseAuthRepository {
     var loginURL: String {
         baseURL + "signin"
     }
-    func makePostRequest(url: String, parameters: [String: Any]) -> URLRequest {
+    var signUpURL: String {
+        baseURL
+    }
+    private func makePostRequest(url: String, parameters: [String: Any]) -> URLRequest {
         let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -28,11 +32,11 @@ class BaseAuthRepository {
         request.httpBody = jsonData
         return request
     }
-}
-
-final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
-    func login(_ info: LoginCredentials) -> AnyPublisher<Info, Error> {
-        let request = makePostRequest(url: loginURL, parameters: info.dictionary)
+    
+    /// T : 보낼 dto, R : 받을 dto
+    func makePostPublisher<T: Encodable, R: Decodable>(with dtoRequest: T, url: String) -> AnyPublisher<R, Error> {
+        print("parameter dictionary : \(dtoRequest.dictionary)")
+        let request = makePostRequest(url: url, parameters: dtoRequest.dictionary)
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
@@ -42,14 +46,18 @@ final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
                 }
                 return data
             }
-            .decode(type: Info.self, decoder: JSONDecoder())
+            .decode(type: R.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
 
-enum NetworkError: Error {
-    case invalidURL
-    case encodingError
-    case invalidResponse
+final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
+    func login(_ info: LoginCredentials) -> AnyPublisher<TokenResponseDTO, Error> {
+        return makePostPublisher(with: info.toDTO(), url: loginURL)
+    }
+
+    func signUp(_ info: SignUpVO) -> AnyPublisher<TokenResponseDTO, Error> {
+        return makePostPublisher(with: info.toDTO(), url: signUpURL)
+    }
 }

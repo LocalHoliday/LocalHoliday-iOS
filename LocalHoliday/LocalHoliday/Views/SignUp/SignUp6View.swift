@@ -40,13 +40,12 @@ struct SignUp6View: View {
             
             Spacer()
             
-            RoundedRectangleButton(text: "다음") {
+            RoundedRectangleButton(text: "회원가입") {
                 phase += 1
             }
             .disabled(nickname == "")
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

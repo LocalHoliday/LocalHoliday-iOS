@@ -102,9 +102,6 @@ struct ReviewWritingView: View {
             }
             .padding(Size.Inner)
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
         .navigationTitle("후기 작성하기")
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -112,6 +109,7 @@ struct ReviewWritingView: View {
                 BackButton(color: .black, padding: 0)
             }
         }
+        .tapToHideKeyboard()
     }
 }
 

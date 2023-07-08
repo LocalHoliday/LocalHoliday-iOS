@@ -20,6 +20,7 @@ struct SignUp4View: View {
                     TextField("aaa@\("")localholiday.com", text: $email) // 하이퍼링크 해제 트릭
                         .font(.H4M)
                         .foregroundColor(email == "" ? .gray100 : .black)
+                        .keyboardType(.emailAddress)
                     Divider()
                 }
                 
@@ -46,7 +47,6 @@ struct SignUp4View: View {
             .disabled(email == "")
         }
         .padding(Size.Inner)
-        .padding(.top, Size.Outer * 2)
     }
 }
 

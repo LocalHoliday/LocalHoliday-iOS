@@ -39,7 +39,7 @@ struct MyPageEditView: View {
                         }
                     }
                     
-                    Text("블랑사랑에디")
+                    Text(authData.user.nickname)
                         .font(.H4M)
                         .padding(Size.Inner)
                 }
@@ -144,7 +144,7 @@ struct MyPageEditView: View {
                         
                         HStack(alignment: .bottom) {
                             VStack(alignment: .leading) {
-                                Text(self.authData.user.address)
+                                Text(self.authData.user.nickname)
                                     .font(.B2M)
                                 Divider()
                             }

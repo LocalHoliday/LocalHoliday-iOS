@@ -32,11 +32,17 @@ struct ImageView: View {
 }
 
 struct CircleImageView: View {
-    var image: Image
+    var image: Image?
     var aspectRatio: CGFloat?
+    var imageURL: String?
     
     init(imageName: String, aspectRatio: CGFloat? = nil) {
         self.image = Image(imageName)
+        self.aspectRatio = aspectRatio
+    }
+    
+    init(imageURL: String?, aspectRatio: CGFloat? = nil) {
+        self.imageURL = imageURL
         self.aspectRatio = aspectRatio
     }
     
@@ -45,10 +51,26 @@ struct CircleImageView: View {
     }
     
     var body: some View {
-        image
-            .resizable()
-            .aspectRatio(aspectRatio, contentMode: .fit)
-            .clipShape(Circle())
+        if let image {
+            image
+                .resizable()
+                .aspectRatio(aspectRatio, contentMode: .fit)
+                .clipShape(Circle())
+        } else if let imageURL {
+            AsyncImage(url: URL(string: imageURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(aspectRatio, contentMode: .fit)
+                    .clipShape(Circle())
+            } placeholder: {
+                // 로드 중에 표시할 로딩 화면 또는 이미지
+                ProgressView()
+            }
+        } else {
+            Image("Splash")
+                .resizable()
+                .aspectRatio(aspectRatio, contentMode: .fit)
+        }
     }
 }
 

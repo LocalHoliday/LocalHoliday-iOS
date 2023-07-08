@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyPageView: View {
+    @EnvironmentObject var authData: AuthData
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .leading) {
@@ -19,11 +20,11 @@ struct MyPageView: View {
                             .stroke(Color.gray100)
                         
                         HStack {
-                            CircleImageView(imageName: "경기")
+                            CircleImageView(imageURL: authData.user.imageURL)
                                 .shadow(radius: 5)
                                 .padding(Size.Inner)
                             
-                            Text("블랑사랑에디")
+                            Text(authData.user.nickname)
                                 .font(.H4M)
                             
                             Spacer()
@@ -41,6 +42,7 @@ struct MyPageView: View {
                 .buttonStyle(.plain)
                 
                 Group {
+                    /*
                     NavigationLink {
                         MyPageScrapView()
                     } label: {
@@ -49,6 +51,7 @@ struct MyPageView: View {
                             Text("스크랩")
                         }
                     }
+                    .buttonStyle(.plain)
 
                     NavigationLink {
                         MyPageCheckScheduleView()
@@ -58,6 +61,7 @@ struct MyPageView: View {
                             Text("일정확인")
                         }
                     }
+                    .buttonStyle(.plain)
 
                     NavigationLink {
                         MyPageRecipesView()
@@ -67,15 +71,18 @@ struct MyPageView: View {
                             Text("로컬 홀리데이북")
                         }
                     }
-                    
+                    .buttonStyle(.plain)
+                    */
                     Button {
                         print("로그아웃!!")
+                        authData.loginInfo = nil
                     } label: {
                         HStack(spacing: Size.XL) {
                             Image.LogOut
                             Text("로그아웃")
                         }
-                    }                    
+                    }
+                    .buttonStyle(.plain)
                 }
                 .font(.B2M)
                 .padding(Size.Inner)

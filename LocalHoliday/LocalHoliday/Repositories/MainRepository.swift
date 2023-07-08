@@ -18,8 +18,9 @@ protocol MainRepository {
 }
 
 class BaseMainRepository: BaseRepository {
+    // Server 0 :
     let baseURL0: String = "http://15.165.241.113:8080/"
-    let baseURL1: String = "http://15.165.241.113:8081/"
+    
     var playURL: String {
         baseURL0 + "play"
     }
@@ -32,6 +33,10 @@ class BaseMainRepository: BaseRepository {
     var reservationURL: String {
         baseURL0 + "reservation"
     }
+    
+    // Server 1 :
+    let baseURL1: String = "http://15.165.241.113:8081/"
+    
 }
 
 final class DefaultMainRepository: BaseMainRepository, MainRepository {

@@ -229,4 +229,40 @@ extension ModelData {
             }
             .store(in: &self.repository.cancellables)
     }
+    
+    public func postReservation(
+        startTime: String,
+        endTime: String,
+        location: String,
+        uuids: [String],
+        onNext: (() -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.postReservation(
+            ReservationDTO(
+                start: startTime,
+                end: endTime,
+                location: location,
+                uuid: uuids
+            ),
+            token: self.token
+        ).prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                onNext?()
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

@@ -13,6 +13,8 @@ protocol MainRepository {
     func getPlayItemDetail(_ uuid: String, token: String?) -> AnyPublisher<BaseResponseLocalPlayDetailDTO, Error>
     
     func getRecommendItems(token: String?) -> AnyPublisher<BaseResponseListRecommendDTO, Error>
+    
+    func postReservation(_ reservation: ReservationDTO, token: String?) -> AnyPublisher<BaseResponseDTO, Error>
 }
 
 class BaseMainRepository: BaseRepository {
@@ -27,6 +29,9 @@ class BaseMainRepository: BaseRepository {
     var recommendURL: String {
         baseURL0 + "recommend"
     }
+    var reservationURL: String {
+        baseURL0 + "reservation"
+    }
 }
 
 final class DefaultMainRepository: BaseMainRepository, MainRepository {
@@ -40,5 +45,9 @@ final class DefaultMainRepository: BaseMainRepository, MainRepository {
     
     func getRecommendItems(token: String?) -> AnyPublisher<BaseResponseListRecommendDTO, Error> {
         return makeGetPublisher(withParameter: [:], url: recommendURL, token: token)
+    }
+    
+    func postReservation(_ reservation: ReservationDTO, token: String?) -> AnyPublisher<BaseResponseDTO, Error> {
+        return makePostPublisher(with: reservation, url: reservationURL, token: token)
     }
 }

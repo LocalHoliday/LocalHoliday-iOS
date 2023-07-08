@@ -10,12 +10,19 @@ import SwiftUI
 struct ReservationView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData: ModelData
-    @State private var reservedJobItems: [JobItem] = JobItem.defaultJobItems
-    @State private var reservedPlayItems: [PlayItem] = PlayItem.defaultPlayItems
+    @EnvironmentObject var authData: AuthData
+    @State private var reservedJobItems: [JobItem] = []
+    @State private var reservedPlayItems: [PlayItem] = []
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
     @State private var isAgreed: Bool = false
     @State private var isAlertPresented = false
+    private var isValidDate: Bool {
+        startDate <= endDate
+    }
+    private var isItemsEmpty: Bool {
+        modelData.selectedJobItem.isEmpty && modelData.selectedPlayItem.isEmpty
+    }
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -32,15 +39,15 @@ struct ReservationView: View {
                         Group {
                             Text("이름   ")
                                 .font(.B3R)
-                            + Text("이정민")
+                            + Text(authData.user.name)
                                 .font(.H3M)
                             Text("전화번호   ")
                                 .font(.B3R)
-                            + Text("010 - 1234 - 1234")
+                            + Text(authData.user.phoneNumber)
                                 .font(.H3M)
                             Text("사는 곳   ")
                                 .font(.B3R)
-                            + Text("서울시 동작구 상도로")
+                            + Text(authData.user.address)
                                 .font(.H3M)
                             Text("로컬 홀리데이 기간을 입력해주세요.")
                                 .font(.B3R)
@@ -64,8 +71,8 @@ struct ReservationView: View {
                         }
                         .font(.H3SB)
                         
-                        ForEach(modelData.pickedJobItems.indices, id: \.self) { index in
-                            JobItemView(jobItem: self.$modelData.pickedJobItems[index], isScrapButtonHidden: true)
+                        ForEach(modelData.selectedJobItem) { jobItem in
+                            JobItemViewWithoutBinding(jobItem: jobItem)
                                 .frame(maxHeight: 100)
                             Divider()
                         }
@@ -78,8 +85,8 @@ struct ReservationView: View {
                             }
                             .font(.H3SB)
                             
-                            ForEach(modelData.pickedPlayItems.indices, id: \.self) { index in
-                                PlayItemView(playItem: self.$modelData.pickedPlayItems[index], isScrapButtonHidden: true)
+                            ForEach(modelData.selectedPlayItem) { playItem in
+                                PlayItemViewWithoutBinding(playItem: playItem)
                                     .frame(maxHeight: 100)
                                 Divider()
                             }
@@ -128,8 +135,16 @@ struct ReservationView: View {
                             Spacer()
                             
                             Button {
-                                self.modelData.deleteSelectedItems()
-                                self.isAlertPresented.toggle()
+                                let jobUUIDs = modelData.selectedJobItem.map { $0.id }
+                                let playUUIDs = modelData.selectedPlayItem.map { $0.id }
+                                let uuids = [jobUUIDs, playUUIDs].flatMap { $0 }
+                                modelData.postReservation(startTime: startDate.stringFormat, endTime: endDate.stringFormat, location: modelData.selectedJobItem.isEmpty ? modelData.selectedPlayItem[0].location : modelData.selectedJobItem[0].location, uuids: uuids, onNext: {
+                                    self.reservedJobItems = modelData.selectedJobItem
+                                    self.reservedPlayItems = modelData.selectedPlayItem
+                                    self.modelData.deleteSelectedItems()
+                                    self.isAlertPresented.toggle()
+                                })
+                                
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: Radius.Small)
@@ -141,7 +156,7 @@ struct ReservationView: View {
                                 }
                             }
                             .buttonStyle(.plain)
-                            .disabled(!self.isAgreed)
+                            .disabled(!self.isAgreed || !isValidDate || isItemsEmpty)
                             
                             Spacer()
                         }
@@ -167,6 +182,10 @@ struct ReservationView: View {
                                 Image.CheckmarkFilled
                                 
                                 Text("예약이 완료되었습니다")
+                                    .font(.H4M)
+                                
+                                Text("예약 진행 상황을 이메일로 알려드립니다.")
+                                    .font(.B1M)
                                 
                                 HStack {
                                     Image.Time
@@ -183,14 +202,14 @@ struct ReservationView: View {
                                 
                                 ScrollView {
                                     VStack {
-                                        ForEach(self.reservedJobItems.indices, id: \.self) { index in
-                                            JobItemView(jobItem: self.$reservedJobItems[index], isScrapButtonHidden: true)
+                                        ForEach(reservedJobItems) { jobItem in
+                                            JobItemViewWithoutBinding(jobItem: jobItem)
                                                 .frame(maxHeight: 100)
                                             Divider()
                                         }
                                         
-                                        ForEach(self.reservedPlayItems.indices, id: \.self) { index in
-                                            PlayItemView(playItem: self.$reservedPlayItems[index], isScrapButtonHidden: true)
+                                        ForEach(reservedPlayItems) { playItem in
+                                            PlayItemViewWithoutBinding(playItem: playItem)
                                                 .frame(maxHeight: 100)
                                             Divider()
                                         }

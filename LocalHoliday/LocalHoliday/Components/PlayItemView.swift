@@ -40,6 +40,26 @@ struct PlayItemView: View {
     }
 }
 
+struct PlayItemViewWithoutBinding: View {
+    var playItem: PlayItem
+    var body: some View {
+        HStack(alignment: .center, spacing: Size.M * 2) {
+            SquareImageView(imageURL: playItem.imageURL)
+            
+            VStack(alignment: .leading, spacing: Size.XS) {
+                HStack {
+                    Text(playItem.title)
+                        .font(.B1M)
+                        .padding(.vertical, Size.XS)
+                    Spacer()
+                }
+                LocationComponent(location: playItem.location)
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+}
+
 struct PlayItemView_Previews: PreviewProvider {
     static var previews: some View {
         let item = PlayItem.default

@@ -11,6 +11,8 @@ import Combine
 protocol MainRepository {
     func getPlayItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseLocalPlayDTO, Error>
     func getPlayItemDetail(_ uuid: String, token: String?) -> AnyPublisher<BaseResponseLocalPlayDetailDTO, Error>
+    
+    func getRecommendItems(token: String?) -> AnyPublisher<BaseResponseListRecommendDTO, Error>
 }
 
 class BaseMainRepository: BaseRepository {
@@ -22,6 +24,9 @@ class BaseMainRepository: BaseRepository {
     var playDetailURL: String {
         baseURL0 + "play/detailview"
     }
+    var recommendURL: String {
+        baseURL0 + "recommend"
+    }
 }
 
 final class DefaultMainRepository: BaseMainRepository, MainRepository {
@@ -31,5 +36,9 @@ final class DefaultMainRepository: BaseMainRepository, MainRepository {
     
     func getPlayItemDetail(_ uuid: String, token: String?) -> AnyPublisher<BaseResponseLocalPlayDetailDTO, Error> {
         return makeGetPublisher(withParameter: ["uuid": uuid], url: playDetailURL, token: token)
+    }
+    
+    func getRecommendItems(token: String?) -> AnyPublisher<BaseResponseListRecommendDTO, Error> {
+        return makeGetPublisher(withParameter: [:], url: recommendURL, token: token)
     }
 }

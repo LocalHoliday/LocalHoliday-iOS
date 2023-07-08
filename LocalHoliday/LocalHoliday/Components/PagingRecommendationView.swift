@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PagingRecommendationView: View {
-    var images = [
-        ImageView(imageName: "Firefly"),
-        ImageView(imageName: "Firefly"),
-        ImageView(imageName: "Firefly")
-    ]
+    @Binding var recommend: Recommend
+    var images: [SquareImageView] { [
+        SquareImageView(imageURL: recommend.imageURL),
+        SquareImageView(imageURL: recommend.jobItem.imageURL),
+        SquareImageView(imageURL: recommend.playItems.count == 0 ? nil : recommend.playItems[0].imageURL)
+    ]}
     @State private var currentPage = 0
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,32 +34,32 @@ struct PagingRecommendationView: View {
             .cornerRadius(Radius.Small)
             
             HStack {
-                Text("반딧불이와 한께하는 무주에서의 로컬 홀리데이")
+                Text(recommend.title)
                     .font(.B3SB)
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
             .padding(.top, Size.XS * 2)
             
-            Text("전라북도 무주군")
+            Text(recommend.location)
                 .font(.B4M)
                 .padding(.top, Size.XS)
             
-            Text("수박 재배  |  반딧불이 축제  |  글램핑")
-                .font(.B4M)
-                .padding(.top, Size.XS)
-            
-            Text("3박 4일")
-                .font(.B4M)
-                .padding(.top, Size.XXS)
-                .foregroundColor(.tertiary)
+//            Text("수박 재배  |  반딧불이 축제  |  글램핑")
+//                .font(.B4M)
+//                .padding(.top, Size.XS)
+//
+//            Text("3박 4일")
+//                .font(.B4M)
+//                .padding(.top, Size.XXS)
+//                .foregroundColor(.tertiary)
         }
     }
 }
 
 struct PagingRecommendationView_Previews: PreviewProvider {
     static var previews: some View {
-        PagingRecommendationView()
+        PagingRecommendationView(recommend: .constant(.empty))
     }
 }
 

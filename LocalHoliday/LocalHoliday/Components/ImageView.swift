@@ -23,7 +23,7 @@ struct ImageView: View {
                 ProgressView()
             }
         } else {
-            Image(imageName!)
+            Image(imageName ?? "Splash")
                 .resizable()
                 .aspectRatio(aspectRatio, contentMode: .fit)
             // 추후에 : ProgressView()
@@ -53,19 +53,37 @@ struct CircleImageView: View {
 }
 
 struct SquareImageView: View {
-    var imageName: String
+    var imageName: String?
     var aspectRatio: CGFloat?
+    var imageURL: String?
 
     var body: some View {
-        Color.clear
-            .aspectRatio(1.0, contentMode: .fit)
-            .overlay(
-                Image(imageName)
-                    .resizable()
-                    .aspectRatio(aspectRatio, contentMode: .fill)
-                    .background(Color.gray100)
-            )
-            .clipped()
+        if let imageURL {
+            Color.clear
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(
+                    AsyncImage(url: URL(string: imageURL)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(aspectRatio, contentMode: .fill)
+                            .background(Color.gray100)
+                    } placeholder: {
+                        // 로드 중에 표시할 로딩 화면 또는 이미지
+                        ProgressView()
+                    }
+                )
+                .clipped()
+        } else {
+            Color.clear
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(
+                    Image(imageName ?? "Splash")
+                        .resizable()
+                        .aspectRatio(aspectRatio, contentMode: .fill)
+                        .background(Color.gray100)
+                )
+                .clipped()
+        }
     }
 }
 

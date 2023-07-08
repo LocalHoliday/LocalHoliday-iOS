@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var playItems: [PlayItem] = []
+    @State private var recommendsVO: RecommendItemsVO = RecommendItemsVO(recommends: [.empty, .empty])
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
@@ -32,16 +33,20 @@ struct HomeView: View {
                 
                 HStack(spacing: Size.Inner) {
                     NavigationLink {
-                        RecommendationDetailView(jobItems: .constant(JobItem.defaultJobItems), playItems: .constant(PlayItem.defaultPlayItems))
+                        RecommendationDetailView(recommend: $recommendsVO.recommends[0])
                     } label: {
-                        PagingRecommendationView()
+                        PagingRecommendationView(recommend: $recommendsVO.recommends[0])
                     }
                     .buttonStyle(.plain)
                     
                     NavigationLink {
-                        RecommendationDetailView(jobItems: .constant(JobItem.defaultJobItems), playItems: .constant(PlayItem.defaultPlayItems))
+                        if recommendsVO.recommends.count < 2 {
+                            EmptyView()
+                        } else {
+                            RecommendationDetailView(recommend: $recommendsVO.recommends[1])
+                        }
                     } label: {
-                        PagingRecommendationView()
+                        PagingRecommendationView(recommend: $recommendsVO.recommends[1])
                     }
                     .buttonStyle(.plain)
                 }
@@ -88,6 +93,11 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, Size.Inner)
                 }
+            }
+        }
+        .onAppear {
+            modelData.getRecommendItems { recommends in
+                recommendsVO.recommends = recommends
             }
         }
     }

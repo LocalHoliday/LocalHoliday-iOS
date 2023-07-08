@@ -199,4 +199,34 @@ extension ModelData {
             }
             .store(in: &self.repository.cancellables)
     }
+    
+    public func getRecommendItems(
+        onNext: (([Recommend]) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getRecommendItems(token: self.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                if let detail = result.result {
+                    let recommends = detail.map { recommendDTO in
+                        Recommend.fromDTO(recommendDTO)
+                    }
+                    onNext?(recommends)
+                }
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

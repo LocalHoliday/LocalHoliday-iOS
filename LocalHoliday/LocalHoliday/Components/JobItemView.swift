@@ -13,7 +13,7 @@ struct JobItemView: View {
     var isScrapButtonHidden = false
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
-            ImageView(imageName: "경기")
+            SquareImageView(imageURL: jobItem.imageURL)
             
             VStack(alignment: .leading, spacing: Size.XS) {
                 HStack {

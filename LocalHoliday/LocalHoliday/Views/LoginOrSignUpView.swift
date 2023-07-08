@@ -13,7 +13,7 @@ struct LoginOrSignUpView: View {
     var body: some View {
         if authData.loginInfo != nil {
             ContentView()
-                .environmentObject(ModelData())
+                .environmentObject(ModelData(token: authData.loginInfo?.token))
         } else {
             NavigationStack {
                 if phase == 0 {

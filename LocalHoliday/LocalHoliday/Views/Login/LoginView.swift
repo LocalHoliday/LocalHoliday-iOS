@@ -28,6 +28,7 @@ struct LoginView: View {
                             .stroke(Color.gray500, lineWidth: 1)
                     )
                     .keyboardType(.emailAddress)
+                    .contentShape(Rectangle())
                     .font(.B1R)
                 
                 SecureField("비밀번호를 입력해주세요", text: $loginCredentials.password)
@@ -38,6 +39,7 @@ struct LoginView: View {
                             .stroke(Color.gray500, lineWidth: 1)
                     )
                     .font(.B1R)
+                    .contentShape(Rectangle())
                     .padding(.top, Size.Inner)
                 
                 Spacer()
@@ -47,23 +49,11 @@ struct LoginView: View {
                 
                 RoundedRectangleButton(text: "로그인") {
                     isLoading = true
-                    authData.repository.login(loginCredentials)
-                        .prefix(1)
-                        .sink { completion in
-                            defer {
-                                isLoading = false
-                            }
-                            switch completion {
-                            case .failure(let error):
-                                print("error! : \(error.localizedDescription)")
-                            case .finished:
-                                print("finished!")
-                            }
-                        } receiveValue: { result in
-                            print("result : \(result)")
-                            authData.loginInfo = result
-                        }
-                        .store(in: &authData.repository.cancellables)
+                    authData.login(loginCredentials) { result in
+                        authData.loginInfo = result
+                    } onCompletion: {
+                        isLoading = false
+                    }
                 }
                 .disabled(isLoading)
             }

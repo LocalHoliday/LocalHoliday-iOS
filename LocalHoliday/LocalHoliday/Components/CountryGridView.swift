@@ -19,7 +19,7 @@ struct CountryGridView: View {
         LazyVGrid(columns: columns, spacing: Size.Inner) {
             ForEach(countries) { country in
                 NavigationLink(value: country) {
-                    IconView(image: Image.경기, title: country.title)
+                    IconView(image: Image(country.title), title: country.title)
                 }
                 .buttonStyle(.plain)
             }

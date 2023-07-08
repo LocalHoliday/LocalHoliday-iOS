@@ -77,7 +77,10 @@ struct CountryDetailView: View {
         .onAppear {
             if !isAPICalled {
                 isAPICalled.toggle()
-                playItems = PlayItem.defaultPlayItems
+//                playItems = PlayItem.defaultPlayItems
+                modelData.getPlayItems(country.title) { playItems in
+                    self.playItems = playItems
+                }
                 jobItems = JobItem.defaultJobItems
             }
             for i in 0..<playItems.count {

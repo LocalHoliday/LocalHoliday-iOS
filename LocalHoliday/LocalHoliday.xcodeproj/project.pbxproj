@@ -22,6 +22,17 @@
 		6F306C532A59307800A241E6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C522A59307800A241E6 /* NetworkError.swift */; };
 		6F306C562A59349700A241E6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C552A59349700A241E6 /* View.swift */; };
 		6F306C582A593CF400A241E6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C572A593CF400A241E6 /* ErrorView.swift */; };
+		6F306C5A2A5940BE00A241E6 /* MainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C592A5940BE00A241E6 /* MainRepository.swift */; };
+		6F306C5C2A59427800A241E6 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C5B2A59427800A241E6 /* BaseRepository.swift */; };
+		6F306C5E2A594D3200A241E6 /* ReservationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C5D2A594D3200A241E6 /* ReservationDTO.swift */; };
+		6F306C602A594D8000A241E6 /* BaseResponseListRecommendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C5F2A594D8000A241E6 /* BaseResponseListRecommendDTO.swift */; };
+		6F306C622A594DBC00A241E6 /* JobDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C612A594DBC00A241E6 /* JobDTO.swift */; };
+		6F306C642A594E0B00A241E6 /* RecommendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C632A594E0B00A241E6 /* RecommendDTO.swift */; };
+		6F306C662A594E4D00A241E6 /* TourDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C652A594E4D00A241E6 /* TourDTO.swift */; };
+		6F306C682A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C672A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift */; };
+		6F306C6A2A594EBC00A241E6 /* FoodDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C692A594EBC00A241E6 /* FoodDTO.swift */; };
+		6F306C6C2A594EE500A241E6 /* HouseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C6B2A594EE500A241E6 /* HouseDTO.swift */; };
+		6F306C6E2A594F1500A241E6 /* LocalPlayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */; };
 		6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AA2A51843500D7A000 /* JobItemView.swift */; };
 		6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AC2A51853100D7A000 /* LocationComponent.swift */; };
 		6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */; };
@@ -106,6 +117,17 @@
 		6F306C522A59307800A241E6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		6F306C552A59349700A241E6 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		6F306C572A593CF400A241E6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		6F306C592A5940BE00A241E6 /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
+		6F306C5B2A59427800A241E6 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		6F306C5D2A594D3200A241E6 /* ReservationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReservationDTO.swift; path = ../../../../../../Desktop/ReservationDTO.swift; sourceTree = "<group>"; };
+		6F306C5F2A594D8000A241E6 /* BaseResponseListRecommendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseListRecommendDTO.swift; sourceTree = "<group>"; };
+		6F306C612A594DBC00A241E6 /* JobDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDTO.swift; sourceTree = "<group>"; };
+		6F306C632A594E0B00A241E6 /* RecommendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDTO.swift; sourceTree = "<group>"; };
+		6F306C652A594E4D00A241E6 /* TourDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourDTO.swift; sourceTree = "<group>"; };
+		6F306C672A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseLocalPlayDTO.swift; sourceTree = "<group>"; };
+		6F306C692A594EBC00A241E6 /* FoodDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDTO.swift; sourceTree = "<group>"; };
+		6F306C6B2A594EE500A241E6 /* HouseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDTO.swift; sourceTree = "<group>"; };
+		6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlayDTO.swift; sourceTree = "<group>"; };
 		6F56B5AA2A51843500D7A000 /* JobItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItemView.swift; sourceTree = "<group>"; };
 		6F56B5AC2A51853100D7A000 /* LocationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationComponent.swift; sourceTree = "<group>"; };
 		6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
@@ -191,7 +213,9 @@
 		6F306C372A58A02400A241E6 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				6F306C5B2A59427800A241E6 /* BaseRepository.swift */,
 				6F306C382A58A03900A241E6 /* AuthRepository.swift */,
+				6F306C592A5940BE00A241E6 /* MainRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -211,6 +235,15 @@
 				6F306C442A591E6400A241E6 /* SignUpDTO.swift */,
 				6F306C492A591F7600A241E6 /* TokenResponseDTO.swift */,
 				6F306C4F2A592CD900A241E6 /* LoginCredentialsDTO.swift */,
+				6F306C5D2A594D3200A241E6 /* ReservationDTO.swift */,
+				6F306C5F2A594D8000A241E6 /* BaseResponseListRecommendDTO.swift */,
+				6F306C612A594DBC00A241E6 /* JobDTO.swift */,
+				6F306C632A594E0B00A241E6 /* RecommendDTO.swift */,
+				6F306C652A594E4D00A241E6 /* TourDTO.swift */,
+				6F306C672A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift */,
+				6F306C692A594EBC00A241E6 /* FoodDTO.swift */,
+				6F306C6B2A594EE500A241E6 /* HouseDTO.swift */,
+				6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -544,32 +577,41 @@
 				6FB4A2D42A4E05FD00943CD4 /* Size.swift in Sources */,
 				6F56B5BB2A519AD700D7A000 /* JobItemDetailView.swift in Sources */,
 				6FB4A2E32A5050F500943CD4 /* BookView.swift in Sources */,
+				6F306C6E2A594F1500A241E6 /* LocalPlayDTO.swift in Sources */,
 				6F56B5C62A51D62500D7A000 /* PlayItemDetailView.swift in Sources */,
 				6F306C342A589BB300A241E6 /* LoginOrSignUpView.swift in Sources */,
 				6F306C362A589C9200A241E6 /* RoundedRectangleView.swift in Sources */,
+				6F306C6A2A594EBC00A241E6 /* FoodDTO.swift in Sources */,
 				6F865A542A584BFE00142386 /* MyPageCheckScheduleView.swift in Sources */,
 				6F306C4E2A592CBC00A241E6 /* AuthenticationResult.swift in Sources */,
 				6FB4A2E52A507A5400943CD4 /* ImageView.swift in Sources */,
 				6F56B5CF2A531B6700D7A000 /* ReviewWritingView.swift in Sources */,
 				6F823BBA2A5881AA00F58C9C /* SignUpManageView.swift in Sources */,
+				6F306C6C2A594EE500A241E6 /* HouseDTO.swift in Sources */,
 				6F7BF06F2A5473FF001B05BF /* RecommendationDetailView.swift in Sources */,
 				6F823BAA2A5870E500F58C9C /* SignUpAgreeView.swift in Sources */,
 				6F306C4A2A591F7600A241E6 /* TokenResponseDTO.swift in Sources */,
 				6F865A562A584C9900142386 /* MyPageRecipesView.swift in Sources */,
+				6F306C5A2A5940BE00A241E6 /* MainRepository.swift in Sources */,
 				6F306C322A58984700A241E6 /* PostalCodeWebView.swift in Sources */,
 				6F865A582A584D2A00142386 /* SplashView.swift in Sources */,
 				6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */,
 				6F56B5B72A51935600D7A000 /* UINavigationController+Extension.swift in Sources */,
 				6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */,
 				6F306C4C2A592CA000A241E6 /* Encodable+Extension.swift in Sources */,
+				6F306C602A594D8000A241E6 /* BaseResponseListRecommendDTO.swift in Sources */,
 				6F306C482A591EF000A241E6 /* SignUpVO.swift in Sources */,
+				6F306C642A594E0B00A241E6 /* RecommendDTO.swift in Sources */,
 				6F306C562A59349700A241E6 /* View.swift in Sources */,
 				6F865A452A56F19F00142386 /* MyPageView.swift in Sources */,
 				6FB4A2DF2A503E8A00943CD4 /* PagingRecommendationView.swift in Sources */,
 				6F56B5C22A51CD3100D7A000 /* ModelData.swift in Sources */,
 				6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */,
 				6F823BB62A587EBF00F58C9C /* SignUp5View.swift in Sources */,
+				6F306C5E2A594D3200A241E6 /* ReservationDTO.swift in Sources */,
 				6F823BAE2A5875C600F58C9C /* SignUp1View.swift in Sources */,
+				6F306C682A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift in Sources */,
+				6F306C5C2A59427800A241E6 /* BaseRepository.swift in Sources */,
 				6FB4A2B42A4DDE3B00943CD4 /* SquarePicture.swift in Sources */,
 				6FCD44EF2A55D59000B0B1DB /* PickItemView.swift in Sources */,
 				6F865A482A56F8F400142386 /* MyPageEditView.swift in Sources */,
@@ -591,6 +633,7 @@
 				6F56B5CA2A52D86200D7A000 /* Review.swift in Sources */,
 				6FB4A2BB2A4DFF2C00943CD4 /* Font+Extension.swift in Sources */,
 				6F865A4E2A5828B800142386 /* MyPageScrapView.swift in Sources */,
+				6F306C662A594E4D00A241E6 /* TourDTO.swift in Sources */,
 				6F823BB02A58775100F58C9C /* SignUp2View.swift in Sources */,
 				6F8797162A55BBD100812C0F /* RecipeDetailView.swift in Sources */,
 				6F306C532A59307800A241E6 /* NetworkError.swift in Sources */,
@@ -598,6 +641,7 @@
 				6FB4A2B72A4DFD4A00943CD4 /* Color+Extension.swift in Sources */,
 				6F56B5C02A51CA1300D7A000 /* PlayItem.swift in Sources */,
 				6F56B5D42A53251600D7A000 /* JobOrPlayItem.swift in Sources */,
+				6F306C622A594DBC00A241E6 /* JobDTO.swift in Sources */,
 				6FB4A2DD2A4E0A0700943CD4 /* CountryGridView.swift in Sources */,
 				6F56B5D62A53374900D7A000 /* PhotosPickerView.swift in Sources */,
 				6F306C392A58A03900A241E6 /* AuthRepository.swift in Sources */,
@@ -746,7 +790,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.chongin.LocalHoliday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -785,7 +829,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.chongin.LocalHoliday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

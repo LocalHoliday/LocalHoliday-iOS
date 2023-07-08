@@ -13,6 +13,13 @@ final class ModelData: ObservableObject {
     @Published var pickedPlayItems: [PlayItem] = []
     @Published var scrappedJobItems: [JobItem] = []
     @Published var scrappedPlayItems: [PlayItem] = []
+    var token: String?
+    
+    init(token: String? = nil) {
+        self.token = token
+    }
+    
+    private let repository = DefaultMainRepository()
     
     var selectedJobItem: [JobItem] {
         pickedJobItems.filter { $0.isSelected }
@@ -128,4 +135,41 @@ final class ModelData: ObservableObject {
     func isContained(_ item: PlayItem) -> Bool {
         scrappedPlayItems.contains(item)
     }
+}
+
+extension ModelData {
+    // MARK: - UseCase
+    public func getPlayItems(
+        _ location: String,
+        onNext: (([PlayItem]) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getPlayItems(location, token: self.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                let playItems: [PlayItem] = [
+                    result.result?.foodDTOList.compactMap { PlayItem.fromDTO($0) },
+                    result.result?.houseDTOList.compactMap { PlayItem.fromDTO($0) },
+                    result.result?.tourDTOList.compactMap { PlayItem.fromDTO($0) }
+                ].compactMap { $0 }
+                .flatMap { $0 }
+                
+                onNext?(playItems)
+            }
+            .store(in: &self.repository.cancellables)
+    }
+    
 }

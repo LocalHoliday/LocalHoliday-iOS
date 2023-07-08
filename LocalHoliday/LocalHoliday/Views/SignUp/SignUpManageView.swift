@@ -34,22 +34,12 @@ struct SignUpManageView: View {
         .animation(.spring(), value: phase)
         .onChange(of: phase) { newValue in
             if newValue == 9 {
-                authData.repository.signUp(user)
-                    .prefix(1)
-                    .sink { completion in
-                        switch completion {
-                        case .failure(let error):
-                            print("error! : \(error.localizedDescription)")
-                            phase += 999
-                        case .finished:
-                            print("finished!")
-                        }
-                    } receiveValue: { result in
-                        print("result : \(result)")
-                        token = result
-                        phase += 1
-                    }
-                    .store(in: &authData.repository.cancellables)
+                authData.signUp(user) { result in
+                    token = result
+                    phase += 1
+                } onError: {
+                    phase += 999
+                }
             } else if newValue == 11 {
                 dismiss()
             }

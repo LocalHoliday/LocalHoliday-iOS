@@ -172,4 +172,31 @@ extension ModelData {
             .store(in: &self.repository.cancellables)
     }
     
+    public func getPlayItemDetail(
+        _ uuid: String,
+        onNext: ((PlayItem) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getPlayItemDetail(uuid, token: self.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                if let detail = result.result {
+                    onNext?(PlayItem.fromDTO(detail))
+                }
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

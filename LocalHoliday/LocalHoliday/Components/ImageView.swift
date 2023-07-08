@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct ImageView: View {
-    var imageName: String
+    var imageName: String?
     var aspectRatio: CGFloat?
+    var imageURL: String?
     
     var body: some View {
-        Image(imageName)
-            .resizable()
-            .aspectRatio(aspectRatio, contentMode: .fit)
+        if let imageURL {
+            AsyncImage(url: URL(string: imageURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(aspectRatio, contentMode: .fit)
+            } placeholder: {
+                // 로드 중에 표시할 로딩 화면 또는 이미지
+                ProgressView()
+            }
+        } else {
+            Image(imageName!)
+                .resizable()
+                .aspectRatio(aspectRatio, contentMode: .fit)
+            // 추후에 : ProgressView()
+        }
     }
 }
 
@@ -77,7 +90,7 @@ struct RoundedSquareImageView: View {
 
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageView(imageName: "SampleJobItemImage_wide")
+        ImageView(imageURL: "http://tong.visitkorea.or.kr/cms/resource/74/2850274_image2_1.jpg")
     }
 }
 

@@ -48,6 +48,17 @@ struct PlayItem: Hashable, Codable, Identifiable {
             isScrapped: false
         )
     }
+    
+    static func fromDTO(_ dto: LocalPlayDetailDTO) -> PlayItem {
+        PlayItem(
+            id: dto.uuid ?? "",
+            imageURL: dto.photo,
+            title: dto.name ?? "",
+            location: dto.addr ?? "",
+            description: dto.info ?? "",
+            isScrapped: false
+        )
+    }
 }
 
 extension PlayItem {

@@ -51,6 +51,8 @@
 		6F56B5D12A531ED200D7A000 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5D02A531ED200D7A000 /* BackButton.swift */; };
 		6F56B5D42A53251600D7A000 /* JobOrPlayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5D32A53251600D7A000 /* JobOrPlayItem.swift */; };
 		6F56B5D62A53374900D7A000 /* PhotosPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5D52A53374900D7A000 /* PhotosPickerView.swift */; };
+		6F6EA11C2A59CCC700189B89 /* LocalPlayDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6EA11B2A59CCC700189B89 /* LocalPlayDetailDTO.swift */; };
+		6F6EA11E2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6EA11D2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift */; };
 		6F7BF06F2A5473FF001B05BF /* RecommendationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BF06E2A5473FF001B05BF /* RecommendationDetailView.swift */; };
 		6F823BAA2A5870E500F58C9C /* SignUpAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F823BA92A5870E500F58C9C /* SignUpAgreeView.swift */; };
 		6F823BAC2A5873CA00F58C9C /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F823BAB2A5873CA00F58C9C /* RoundedRectangleButton.swift */; };
@@ -146,6 +148,8 @@
 		6F56B5D02A531ED200D7A000 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		6F56B5D32A53251600D7A000 /* JobOrPlayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobOrPlayItem.swift; sourceTree = "<group>"; };
 		6F56B5D52A53374900D7A000 /* PhotosPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerView.swift; sourceTree = "<group>"; };
+		6F6EA11B2A59CCC700189B89 /* LocalPlayDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlayDetailDTO.swift; sourceTree = "<group>"; };
+		6F6EA11D2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseLocalPlayDetailDTO.swift; sourceTree = "<group>"; };
 		6F7BF06E2A5473FF001B05BF /* RecommendationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationDetailView.swift; sourceTree = "<group>"; };
 		6F823BA92A5870E500F58C9C /* SignUpAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeView.swift; sourceTree = "<group>"; };
 		6F823BAB2A5873CA00F58C9C /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				6F306C692A594EBC00A241E6 /* FoodDTO.swift */,
 				6F306C6B2A594EE500A241E6 /* HouseDTO.swift */,
 				6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */,
+				6F6EA11B2A59CCC700189B89 /* LocalPlayDetailDTO.swift */,
+				6F6EA11D2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				6FB4A2E32A5050F500943CD4 /* BookView.swift in Sources */,
 				6F306C6E2A594F1500A241E6 /* LocalPlayDTO.swift in Sources */,
 				6F56B5C62A51D62500D7A000 /* PlayItemDetailView.swift in Sources */,
+				6F6EA11C2A59CCC700189B89 /* LocalPlayDetailDTO.swift in Sources */,
 				6F306C342A589BB300A241E6 /* LoginOrSignUpView.swift in Sources */,
 				6F306C362A589C9200A241E6 /* RoundedRectangleView.swift in Sources */,
 				6F306C6A2A594EBC00A241E6 /* FoodDTO.swift in Sources */,
@@ -643,6 +650,7 @@
 				6F56B5D42A53251600D7A000 /* JobOrPlayItem.swift in Sources */,
 				6F306C622A594DBC00A241E6 /* JobDTO.swift in Sources */,
 				6FB4A2DD2A4E0A0700943CD4 /* CountryGridView.swift in Sources */,
+				6F6EA11E2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift in Sources */,
 				6F56B5D62A53374900D7A000 /* PhotosPickerView.swift in Sources */,
 				6F306C392A58A03900A241E6 /* AuthRepository.swift in Sources */,
 				6F865A4C2A57008300142386 /* User.swift in Sources */,

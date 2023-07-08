@@ -22,7 +22,7 @@ struct PlayItemDetailView: View {
                             .foregroundColor(.clear)
                             .frame(height: proxy.size.width / 498 * 256)
                             .background(
-                                ImageView(imageName: "SampleJobItemImage_wide")
+                                ImageView(imageURL: playItem.imageURL)
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 498 * 256)
                                     .clipped()
@@ -86,6 +86,9 @@ struct PlayItemDetailView: View {
         .onAppear {
             if !isAPICalled {
                 isAPICalled.toggle()
+                modelData.getPlayItemDetail(playItem.id) { playItem in
+                    self.playItem = playItem
+                }
                 reviews = Review.defaultReviews
             }
             playItem.isScrapped = modelData.isContained(playItem)

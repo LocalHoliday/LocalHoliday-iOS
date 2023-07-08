@@ -67,4 +67,29 @@ extension AuthData {
             }
             .store(in: &self.repository.cancellables)
     }
+    
+    public func getInfo(
+        onNext: ((UserInfoDTO) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getInfo(token: self.loginInfo?.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                onNext?(result)
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

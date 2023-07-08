@@ -51,6 +51,9 @@ struct LoginView: View {
                     isLoading = true
                     authData.login(loginCredentials) { result in
                         authData.loginInfo = result
+                        authData.getInfo() { info in
+                            authData.user = User.fromDTO(info)
+                        }
                     } onCompletion: {
                         isLoading = false
                     }

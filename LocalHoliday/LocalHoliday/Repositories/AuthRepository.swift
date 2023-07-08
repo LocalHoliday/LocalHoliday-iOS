@@ -11,7 +11,7 @@ import Combine
 protocol AuthRepository {
     func login(_ info: LoginCredentials, token: String?) -> AnyPublisher<TokenResponseDTO, Error>
     func signUp(_ info: SignUpVO, token: String?) -> AnyPublisher<TokenResponseDTO, Error>
-    func getInfo(token: String?) -> 
+    func getInfo(token: String?) -> AnyPublisher<UserInfoDTO, Error>
 }
 
 class BaseAuthRepository: BaseRepository {
@@ -36,5 +36,7 @@ final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
         return makePostPublisher(with: info.toDTO(), url: signUpURL, token: token)
     }
     
-    
+    func getInfo(token: String?) -> AnyPublisher<UserInfoDTO, Error> {
+        return makeGetPublisher(withParameter: [:], url: getInfoURL, token: token)
+    }
 }

@@ -33,6 +33,7 @@
 		6F306C6C2A594EE500A241E6 /* HouseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C6B2A594EE500A241E6 /* HouseDTO.swift */; };
 		6F306C6E2A594F1500A241E6 /* LocalPlayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */; };
 		6F486E2B2A5A0D5D00D13AA4 /* ReservationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2A2A5A0D5D00D13AA4 /* ReservationDTO.swift */; };
+		6F486E2D2A5A0D9400D13AA4 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */; };
 		6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AA2A51843500D7A000 /* JobItemView.swift */; };
 		6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AC2A51853100D7A000 /* LocationComponent.swift */; };
 		6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */; };
@@ -133,6 +134,7 @@
 		6F306C6B2A594EE500A241E6 /* HouseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDTO.swift; sourceTree = "<group>"; };
 		6F306C6D2A594F1500A241E6 /* LocalPlayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlayDTO.swift; sourceTree = "<group>"; };
 		6F486E2A2A5A0D5D00D13AA4 /* ReservationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDTO.swift; sourceTree = "<group>"; };
+		6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		6F56B5AA2A51843500D7A000 /* JobItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItemView.swift; sourceTree = "<group>"; };
 		6F56B5AC2A51853100D7A000 /* LocationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationComponent.swift; sourceTree = "<group>"; };
 		6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				6F306C442A591E6400A241E6 /* SignUpDTO.swift */,
 				6F306C492A591F7600A241E6 /* TokenResponseDTO.swift */,
 				6F306C4F2A592CD900A241E6 /* LoginCredentialsDTO.swift */,
+				6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */,
 			);
 			path = Server1;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				6F56B5B72A51935600D7A000 /* UINavigationController+Extension.swift in Sources */,
 				6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */,
 				6F306C4C2A592CA000A241E6 /* Encodable+Extension.swift in Sources */,
+				6F486E2D2A5A0D9400D13AA4 /* UserInfoDTO.swift in Sources */,
 				6F306C602A594D8000A241E6 /* BaseResponseListRecommendDTO.swift in Sources */,
 				6F306C482A591EF000A241E6 /* SignUpVO.swift in Sources */,
 				6F306C642A594E0B00A241E6 /* RecommendDTO.swift in Sources */,

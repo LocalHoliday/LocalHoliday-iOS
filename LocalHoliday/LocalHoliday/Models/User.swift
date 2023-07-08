@@ -15,6 +15,18 @@ struct User: Hashable, Codable {
     var nickname: String
     var address: String
     var email: String
+    
+    static func fromDTO(_ dto: UserInfoDTO) -> Self {
+        Self(
+            uuid: dto.id ?? "",
+            name: dto.name ?? "",
+            imageURL: dto.photo,
+            phoneNumber: dto.phone ?? "",
+            nickname: dto.nickname ?? "",
+            address: dto.place ?? "",
+            email: dto.email ?? ""
+        )
+    }
 }
 
 extension User {

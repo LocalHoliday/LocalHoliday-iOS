@@ -12,9 +12,9 @@ struct MyPageView: View {
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .leading) {
-                NavigationLink {
-                    MyPageEditView()
-                } label: {
+//                NavigationLink {
+//                    MyPageEditView()
+//                } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: Radius.Small)
                             .stroke(Color.gray100)
@@ -28,18 +28,19 @@ struct MyPageView: View {
                                 .font(.H4M)
                             
                             Spacer()
-                            
+                            /*
                             Image(systemName: "chevron.right")
                                 .renderingMode(.template)
                                 .foregroundColor(.gray300)
                                 .padding(.horizontal, Size.Inner)
+                             */
                         }
                     }
                     .frame(maxHeight: 100)
                     .padding(Size.Inner)
                     .padding(.vertical, Size.Inner)
-                }
-                .buttonStyle(.plain)
+//                }
+//                .buttonStyle(.plain)
                 
                 Group {
                     /*

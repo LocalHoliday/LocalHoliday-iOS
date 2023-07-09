@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 protocol MainRepository {
     func getPlayItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseLocalPlayDTO, Error>
@@ -17,6 +18,9 @@ protocol MainRepository {
     func postReservation(_ reservation: ReservationDTO, token: String?) -> AnyPublisher<BaseResponseDTO, Error>
     
     func getJobItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseJobDTO, Error>
+    func getJobItemDetail(_ uuid: String, location: String, token: String?) -> AnyPublisher<BaseResponseJobDetailDTO, Error>
+    
+    func postReview(_ targetUUID: String, content: String, image: UIImage?, token: String?) -> AnyPublisher<BaseResponseDTO, Error>
 }
 
 class BaseMainRepository: BaseRepository {
@@ -34,6 +38,9 @@ class BaseMainRepository: BaseRepository {
     }
     var reservationURL: String {
         baseURL0 + "reservation"
+    }
+    var reviewURL: String {
+        baseURL0 + "review"
     }
     
     // Server 1 :
@@ -63,5 +70,13 @@ final class DefaultMainRepository: BaseMainRepository, MainRepository {
     
     func getJobItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseJobDTO, Error> {
         return makeGetPublisher(withParameter: ["place": location], url: jobURL, token: token)
+    }
+    
+    func getJobItemDetail(_ uuid: String, location: String, token: String?) -> AnyPublisher<BaseResponseJobDetailDTO, Error> {
+        return makeGetPublisher(withParameter: ["place": location], url: "\(jobURL)/\(uuid)", token: token)
+    }
+    
+    func postReview(_ targetUUID: String, content: String, image: UIImage?, token: String?) -> AnyPublisher<BaseResponseDTO, Error> {
+        return makeMultipartPublisher(withImage: image, url: reviewURL, queries: ["content": content, "targetId": targetUUID], token: token)
     }
 }

@@ -37,6 +37,9 @@
 		6F486E2F2A5A900D00D13AA4 /* ResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */; };
 		6F486E312A5AA61500D13AA4 /* BaseResponseJobDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */; };
 		6F486E332A5AAEF900D13AA4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E322A5AAEF900D13AA4 /* String+Extension.swift */; };
+		6F486E352A5AB4ED00D13AA4 /* BaseResponseJobDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E342A5AB4ED00D13AA4 /* BaseResponseJobDetailDTO.swift */; };
+		6F486E372A5AE2A900D13AA4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E362A5AE2A900D13AA4 /* View+Extension.swift */; };
+		6F486E392A5AE2BE00D13AA4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E382A5AE2BE00D13AA4 /* UIView+Extension.swift */; };
 		6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AA2A51843500D7A000 /* JobItemView.swift */; };
 		6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AC2A51853100D7A000 /* LocationComponent.swift */; };
 		6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */; };
@@ -141,6 +144,9 @@
 		6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDTO.swift; sourceTree = "<group>"; };
 		6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseJobDTO.swift; sourceTree = "<group>"; };
 		6F486E322A5AAEF900D13AA4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6F486E342A5AB4ED00D13AA4 /* BaseResponseJobDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseJobDetailDTO.swift; sourceTree = "<group>"; };
+		6F486E362A5AE2A900D13AA4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		6F486E382A5AE2BE00D13AA4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6F56B5AA2A51843500D7A000 /* JobItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItemView.swift; sourceTree = "<group>"; };
 		6F56B5AC2A51853100D7A000 /* LocationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationComponent.swift; sourceTree = "<group>"; };
 		6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
@@ -324,6 +330,7 @@
 				6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */,
 				6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */,
 				6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */,
+				6F486E342A5AB4ED00D13AA4 /* BaseResponseJobDetailDTO.swift */,
 			);
 			path = Server1;
 			sourceTree = "<group>";
@@ -462,6 +469,8 @@
 				6F306C4B2A592CA000A241E6 /* Encodable+Extension.swift */,
 				6F6EA1232A59F40300189B89 /* Date+Extension.swift */,
 				6F486E322A5AAEF900D13AA4 /* String+Extension.swift */,
+				6F486E362A5AE2A900D13AA4 /* View+Extension.swift */,
+				6F486E382A5AE2BE00D13AA4 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -631,6 +640,7 @@
 				6F306C6A2A594EBC00A241E6 /* FoodDTO.swift in Sources */,
 				6F865A542A584BFE00142386 /* MyPageCheckScheduleView.swift in Sources */,
 				6F306C4E2A592CBC00A241E6 /* AuthenticationResult.swift in Sources */,
+				6F486E372A5AE2A900D13AA4 /* View+Extension.swift in Sources */,
 				6FB4A2E52A507A5400943CD4 /* ImageView.swift in Sources */,
 				6F56B5CF2A531B6700D7A000 /* ReviewWritingView.swift in Sources */,
 				6F823BBA2A5881AA00F58C9C /* SignUpManageView.swift in Sources */,
@@ -658,6 +668,7 @@
 				6FB4A2A42A4DDD5700943CD4 /* LocalHolidayApp.swift in Sources */,
 				6F6EA1242A59F40300189B89 /* Date+Extension.swift in Sources */,
 				6F823BB62A587EBF00F58C9C /* SignUp5View.swift in Sources */,
+				6F486E352A5AB4ED00D13AA4 /* BaseResponseJobDetailDTO.swift in Sources */,
 				6F823BAE2A5875C600F58C9C /* SignUp1View.swift in Sources */,
 				6F306C682A594E8100A241E6 /* BaseResponseLocalPlayDTO.swift in Sources */,
 				6F306C5C2A59427800A241E6 /* BaseRepository.swift in Sources */,
@@ -693,6 +704,7 @@
 				6F56B5C02A51CA1300D7A000 /* PlayItem.swift in Sources */,
 				6F56B5D42A53251600D7A000 /* JobOrPlayItem.swift in Sources */,
 				6F306C622A594DBC00A241E6 /* JobDTO.swift in Sources */,
+				6F486E392A5AE2BE00D13AA4 /* UIView+Extension.swift in Sources */,
 				6FB4A2DD2A4E0A0700943CD4 /* CountryGridView.swift in Sources */,
 				6F6EA11E2A59CD6B00189B89 /* BaseResponseLocalPlayDetailDTO.swift in Sources */,
 				6F56B5D62A53374900D7A000 /* PhotosPickerView.swift in Sources */,
@@ -842,7 +854,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.chongin.LocalHoliday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -881,7 +893,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.chongin.LocalHoliday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

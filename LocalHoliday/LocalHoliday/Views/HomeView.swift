@@ -52,6 +52,7 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, Size.Inner)
                 
+                /*
                 Text("📷 다른 사람들의 로컬 홀리데이를 구경해보세요!")
                     .font(.H4SB)
                     .padding(.horizontal, Size.Inner)
@@ -93,6 +94,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, Size.Inner)
                 }
+                 */
             }
         }
         .onAppear {

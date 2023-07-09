@@ -22,7 +22,7 @@ struct JobItemDetailView: View {
                             .foregroundColor(.clear)
                             .frame(height: proxy.size.width / 498 * 256)
                             .background(
-                                ImageView(imageName: "SampleJobItemImage_wide")
+                                ImageView(imageURL: jobItem.imageURL)
                                     .aspectRatio(contentMode: .fill)
                                     .frame(height: proxy.size.width / 498 * 256)
                                     .clipped()
@@ -69,9 +69,10 @@ struct JobItemDetailView: View {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: Size.XS)
                                 .foregroundColor(.gray100)
-                            
+                            /*
                             ReviewsView(reviews: $reviews, item: .constant(.jobItem(jobItem)))
                                 .padding(Size.Inner)
+                             */
                         }
                     }
                 }

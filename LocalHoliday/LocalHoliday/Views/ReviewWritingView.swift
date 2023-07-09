@@ -10,9 +10,18 @@ import PhotosUI
 
 struct ReviewWritingView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var modelData: ModelData
     @State private var reviewBody: String = ""
     @State private var postedImage: Image? = nil
     var item: JobOrPlayItem
+    var targetUUID: String {
+        switch item {
+        case .jobItem(let jobItem):
+            return jobItem.id
+        case .playItem(let playItem):
+            return playItem.id
+        }
+    }
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Size.Inner) {
@@ -23,9 +32,9 @@ struct ReviewWritingView: View {
                         Group {
                             switch item {
                             case .jobItem(let item):
-                                JobItemView(jobItem: .constant(item), isScrapButtonHidden: true)
+                                JobItemViewWithoutBinding(jobItem: item)
                             case .playItem(let item):
-                                PlayItemView(playItem: .constant(item), isScrapButtonHidden: true)
+                                PlayItemViewWithoutBinding(playItem: item)
                             }
                         }
                         .padding(Size.M)
@@ -87,7 +96,9 @@ struct ReviewWritingView: View {
                 
                 Button {
                     print("등록하기")
-                    dismiss()
+                    modelData.postReview(targetUUID: targetUUID, content: reviewBody, image: postedImage, onNext: {
+                        dismiss()
+                    })
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: Radius.Small)

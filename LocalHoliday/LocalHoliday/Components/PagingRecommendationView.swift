@@ -11,8 +11,8 @@ struct PagingRecommendationView: View {
     @Binding var recommend: Recommend
     var images: [SquareImageView] { [
         SquareImageView(imageURL: recommend.imageURL),
-        SquareImageView(imageURL: recommend.jobItem.imageURL),
-        SquareImageView(imageURL: recommend.playItems.count == 0 ? nil : recommend.playItems[0].imageURL)
+        SquareImageView(imageURL: recommend.playItems.count <= 1 ? nil : recommend.playItems[1].imageURL),
+        SquareImageView(imageURL: recommend.playItems.count <= 2 ? nil : recommend.playItems[2].imageURL)
     ]}
     @State private var currentPage = 0
     var body: some View {

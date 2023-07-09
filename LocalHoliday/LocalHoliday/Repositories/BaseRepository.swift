@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class BaseRepository {
     var cancellables = Set<AnyCancellable>()
@@ -37,6 +38,44 @@ class BaseRepository {
             request.url?.append(queryItems: parameters.map({ (key, value) in
                 URLQueryItem(name: key, value: "\(value)")
             }))
+        }
+        return request
+    }
+    
+    private func makeMultipartRequest(url: String, image: UIImage?, queries: [String: Any]?, token: String?) -> URLRequest {
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        
+        // Multipart Form Data 생성
+        let boundary = UUID().uuidString
+        let contentType = "multipart/form-data; boundary=\(boundary)"
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        var body = Data()
+        
+        // 첫 번째 키: 파일 데이터
+        if let imageData = image?.jpegData(compressionQuality: 0.01) {
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"file\"; filename=\"image.jpg\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            body.append("\r\n".data(using: .utf8)!)
+        }
+        
+        queries?.forEach({ key, value in
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+            body.append("\(value)\r\n".data(using: .utf8)!)
+        })
+        
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        // URLRequest에 본문(body) 설정
+        request.httpBody = body
+        
+        if let token {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         return request
     }
@@ -80,6 +119,22 @@ class BaseRepository {
     func makeGetPublisher<R: Decodable>(withParameter dictionary: [String: Any], url: String, token: String?) -> AnyPublisher<R, Error> {
         print("parameter dictionary : \(dictionary)")
         let request = makeGetRequest(url: url, parameters: dictionary, token: token)
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw NetworkError.invalidResponse
+                }
+                return data
+            }
+            .decode(type: R.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func makeMultipartPublisher<R: Decodable>(withImage uiImage: UIImage?, url: String, queries: [String:Any], token: String?) -> AnyPublisher<R, Error> {
+        let request = makeMultipartRequest(url: url, image: uiImage, queries: queries, token: token)
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in

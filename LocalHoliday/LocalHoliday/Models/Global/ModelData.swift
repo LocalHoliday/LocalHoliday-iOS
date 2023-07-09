@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class ModelData: ObservableObject {
     @Published var countries: [Country] = Country.defaultCountries
@@ -291,6 +292,67 @@ extension ModelData {
                     .map { JobItem.fromDTO($0) }
                 
                 onNext?(jobItems)
+            }
+            .store(in: &self.repository.cancellables)
+    }
+    
+    public func getJobItemDetail(
+        _ uuid: String,
+        location: String,
+        onNext: ((JobItem) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getJobItemDetail(uuid, location: location, token: self.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                let jobItem: JobItem = JobItem.fromDTO(result.job)
+                
+                onNext?(jobItem)
+            }
+            .store(in: &self.repository.cancellables)
+    }
+    
+    public func postReview(
+        targetUUID: String,
+        content: String,
+        image: Image?,
+        onNext: (() -> Void)? = nil,
+        onError: ((Error) -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.postReview(
+            targetUUID,
+            content: content,
+            image: image?.asUIImage(),
+            token: self.token
+        ).prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?(error)
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                onNext?()
             }
             .store(in: &self.repository.cancellables)
     }

@@ -12,6 +12,8 @@ protocol AuthRepository {
     func login(_ info: LoginCredentials, token: String?) -> AnyPublisher<TokenResponseDTO, Error>
     func signUp(_ info: SignUpVO, token: String?) -> AnyPublisher<TokenResponseDTO, Error>
     func getInfo(token: String?) -> AnyPublisher<UserInfoDTO, Error>
+    func verifyEmail(_ email: String, token: String?) -> AnyPublisher<ResultDTO, Error>
+    func verifyNickname(_ nickname: String, token: String?) -> AnyPublisher<ResultDTO, Error>
 }
 
 class BaseAuthRepository: BaseRepository {
@@ -24,6 +26,12 @@ class BaseAuthRepository: BaseRepository {
     }
     var getInfoURL: String {
         baseURL
+    }
+    var verifyEmailURL: String {
+        baseURL + "verify/email"
+    }
+    var verifyNicknameURL: String {
+        baseURL + "verify/nickname"
     }
 }
 
@@ -38,5 +46,13 @@ final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
     
     func getInfo(token: String?) -> AnyPublisher<UserInfoDTO, Error> {
         return makeGetPublisher(withParameter: [:], url: getInfoURL, token: token)
+    }
+    
+    func verifyEmail(_ email: String, token: String?) -> AnyPublisher<ResultDTO, Error> {
+        return makeGetPublisher(withParameter: ["email": email], url: verifyEmailURL, token: token)
+    }
+    
+    func verifyNickname(_ nickname: String, token: String?) -> AnyPublisher<ResultDTO, Error> {
+        return makeGetPublisher(withParameter: ["nickname": nickname], url: verifyNicknameURL, token: token)
     }
 }

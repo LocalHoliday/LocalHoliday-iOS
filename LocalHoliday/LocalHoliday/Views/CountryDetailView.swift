@@ -77,11 +77,10 @@ struct CountryDetailView: View {
         .onAppear {
             if !isAPICalled {
                 isAPICalled.toggle()
-//                playItems = PlayItem.defaultPlayItems
                 modelData.getPlayItems(country.title) { playItems in
                     self.playItems = playItems
                 }
-                jobItems = JobItem.defaultJobItems
+                jobItems = []
             }
             for i in 0..<playItems.count {
                 playItems[i].isScrapped = modelData.isContained(playItems[i])

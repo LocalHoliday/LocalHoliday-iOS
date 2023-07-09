@@ -92,4 +92,64 @@ extension AuthData {
             }
             .store(in: &self.repository.cancellables)
     }
+    
+    public func verifyEmail(
+        _ email: String,
+        onNext: ((Bool) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.verifyEmail(email, token: self.loginInfo?.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                if let r = result.result {
+                    onNext?(r)
+                } else {
+                    onNext?(false)
+                }
+            }
+            .store(in: &self.repository.cancellables)
+    }
+    
+    public func verifyNickname(
+        _ nickname: String,
+        onNext: ((Bool) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.verifyNickname(nickname, token: self.loginInfo?.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                if let r = result.result {
+                    onNext?(r)
+                } else {
+                    onNext?(false)
+                }
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

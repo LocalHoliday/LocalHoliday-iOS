@@ -9,9 +9,8 @@ import Foundation
 
 extension Date {
     var stringFormat: String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyyMMdd"
-//        return dateFormatter.string(from: self)
-        String(Int64(self.timeIntervalSince1970 * 1000))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self) + " 00:00:00"
     }
 }

@@ -186,6 +186,7 @@ struct ReservationView: View {
                                 
                                 Text("예약 진행 상황을 이메일로 알려드립니다.")
                                     .font(.B1M)
+                                    .padding(.top, Size.XS)
                                 
                                 HStack {
                                     Image.Time

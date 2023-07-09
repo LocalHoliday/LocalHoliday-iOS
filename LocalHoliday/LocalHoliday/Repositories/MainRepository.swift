@@ -15,6 +15,8 @@ protocol MainRepository {
     func getRecommendItems(token: String?) -> AnyPublisher<BaseResponseListRecommendDTO, Error>
     
     func postReservation(_ reservation: ReservationDTO, token: String?) -> AnyPublisher<BaseResponseDTO, Error>
+    
+    func getJobItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseJobDTO, Error>
 }
 
 class BaseMainRepository: BaseRepository {
@@ -37,6 +39,9 @@ class BaseMainRepository: BaseRepository {
     // Server 1 :
     let baseURL1: String = "http://15.165.241.113:8081/"
     
+    var jobURL: String {
+        baseURL1 + "job"
+    }
 }
 
 final class DefaultMainRepository: BaseMainRepository, MainRepository {
@@ -54,5 +59,9 @@ final class DefaultMainRepository: BaseMainRepository, MainRepository {
     
     func postReservation(_ reservation: ReservationDTO, token: String?) -> AnyPublisher<BaseResponseDTO, Error> {
         return makePostPublisher(with: reservation, url: reservationURL, token: token)
+    }
+    
+    func getJobItems(_ location: String, token: String?) -> AnyPublisher<BaseResponseJobDTO, Error> {
+        return makeGetPublisher(withParameter: ["place": location], url: jobURL, token: token)
     }
 }

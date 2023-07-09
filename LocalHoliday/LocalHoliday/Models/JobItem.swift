@@ -14,7 +14,7 @@ struct JobItem: Hashable, Codable, Identifiable {
     var location: String
     var startTime: String
     var endTime: String
-    var salary: Int?
+    var salary: Int
     var manager: String
     var phoneNumber: String
     var isScrapped: Bool
@@ -29,7 +29,7 @@ struct JobItem: Hashable, Codable, Identifiable {
             location: dto.addr ?? "",
             startTime: dto.startTime ?? "",
             endTime: dto.endTime ?? "",
-            salary: Int(dto.pay ?? "0"),
+            salary: dto.pay ?? 0,
             manager: "",
             phoneNumber: "",
             isScrapped: false,
@@ -45,13 +45,14 @@ extension JobItem {
         location: "전라북도 남원시 금하정2길 20(금동)",
         startTime: "2023.05.08",
         endTime: "2023.07.08",
+        salary: 0,
         manager: "이정민",
         phoneNumber: "010-1111-1111",
         isScrapped: false,
         isSelected: false
     )
     
-    static let empty = JobItem(id: "", title: "", location: "", startTime: "", endTime: "", manager: "", phoneNumber: "", isScrapped: false, isSelected: false)
+    static let empty = JobItem(id: "", title: "", location: "", startTime: "", endTime: "", salary: 0, manager: "", phoneNumber: "", isScrapped: false, isSelected: false)
     
     static let defaultJobItems: [JobItem] = (0..<5).map { index in
         JobItem(
@@ -60,6 +61,7 @@ extension JobItem {
             location: "전라북도 남원시 금하정2길 20(금동)",
             startTime: "2023.05.08",
             endTime: "2023.07.08",
+            salary: 0,
             manager: "이정민",
             phoneNumber: "010-1111-1111",
             isScrapped: false,

@@ -13,7 +13,7 @@ struct JobItemView: View {
     var isScrapButtonHidden = false
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
-            SquareImageView(imageURL: jobItem.imageURL)
+            RoundedSquareImageView(imageURL: jobItem.imageURL)
             
             VStack(alignment: .leading, spacing: Size.XS) {
                 HStack {
@@ -26,14 +26,14 @@ struct JobItemView: View {
                 Text("작업기간 ")
                     .font(.B3M)
                     .foregroundColor(.black)
-                + Text("\(jobItem.startTime) ~ \(jobItem.endTime)")
+                + Text("\(jobItem.startTime.toDateIfIsoFormatted?.localizedFormat ?? "") ~ \(jobItem.endTime.toDateIfIsoFormatted?.localizedFormat ?? "")")
                     .font(.B3M)
                     .foregroundColor(.gray500)
                 
                 Text("급여 ")
                     .font(.B3M)
                     .foregroundColor(.black)
-                + Text(jobItem.salary == nil ? "협의" : "\(jobItem.salary!)")
+                + Text(jobItem.salary == 0 ? "협의" : "\(jobItem.salary)")
                     .font(.B3M)
                     .foregroundColor(.tertiary)
             }
@@ -70,14 +70,14 @@ struct JobItemViewWithoutBinding: View {
                 Text("작업기간 ")
                     .font(.B3M)
                     .foregroundColor(.black)
-                + Text("\(jobItem.startTime) ~ \(jobItem.endTime)")
+                + Text("\(jobItem.startTime.toDateIfIsoFormatted?.localizedFormat ?? "") ~ \(jobItem.endTime.toDateIfIsoFormatted?.localizedFormat ?? "")")
                     .font(.B3M)
                     .foregroundColor(.gray500)
                 
                 Text("급여 ")
                     .font(.B3M)
                     .foregroundColor(.black)
-                + Text(jobItem.salary == nil ? "협의" : "\(jobItem.salary!)")
+                + Text(jobItem.salary == 0 ? "협의" : "\(jobItem.salary)")
                     .font(.B3M)
                     .foregroundColor(.tertiary)
             }

@@ -265,4 +265,33 @@ extension ModelData {
             }
             .store(in: &self.repository.cancellables)
     }
+    
+    public func getJobItems(
+        _ location: String,
+        onNext: (([JobItem]) -> Void)? = nil,
+        onError: (() -> Void)? = nil,
+        onCompletion: (() -> Void)? = nil
+    ) {
+        self.repository.getJobItems(location, token: self.token)
+            .prefix(1)
+            .sink { completion in
+                defer {
+                    onCompletion?()
+                }
+                switch completion {
+                case .failure(let error):
+                    print("error! : \(error.localizedDescription)")
+                    onError?()
+                case.finished:
+                    print("finished!")
+                }
+            } receiveValue: { result in
+                print("result : \(result)")
+                let jobItems: [JobItem] = result.jobs
+                    .map { JobItem.fromDTO($0) }
+                
+                onNext?(jobItems)
+            }
+            .store(in: &self.repository.cancellables)
+    }
 }

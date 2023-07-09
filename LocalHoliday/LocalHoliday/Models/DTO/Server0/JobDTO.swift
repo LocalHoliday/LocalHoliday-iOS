@@ -13,6 +13,6 @@ struct JobDTO: Codable {
     var addr: String?
     var startTime: String?
     var endTime: String?
-    var pay: String?
+    var pay: Int?
     var photo: String?
 }

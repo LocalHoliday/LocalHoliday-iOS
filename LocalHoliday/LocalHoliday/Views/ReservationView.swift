@@ -138,7 +138,7 @@ struct ReservationView: View {
                                 let jobUUIDs = modelData.selectedJobItem.map { $0.id }
                                 let playUUIDs = modelData.selectedPlayItem.map { $0.id }
                                 let uuids = [jobUUIDs, playUUIDs].flatMap { $0 }
-                                modelData.postReservation(startTime: startDate.stringFormat, endTime: endDate.stringFormat, location: modelData.selectedJobItem.isEmpty ? modelData.selectedPlayItem[0].location : modelData.selectedJobItem[0].location, uuids: uuids, onNext: {
+                                modelData.postReservation(startTime: startDate.serverSendingFormat, endTime: endDate.serverSendingFormat, location: modelData.selectedJobItem.isEmpty ? modelData.selectedPlayItem[0].location : modelData.selectedJobItem[0].location, uuids: uuids, onNext: {
                                     self.reservedJobItems = modelData.selectedJobItem
                                     self.reservedPlayItems = modelData.selectedPlayItem
                                     self.modelData.deleteSelectedItems()

@@ -35,6 +35,8 @@
 		6F486E2B2A5A0D5D00D13AA4 /* ReservationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2A2A5A0D5D00D13AA4 /* ReservationDTO.swift */; };
 		6F486E2D2A5A0D9400D13AA4 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */; };
 		6F486E2F2A5A900D00D13AA4 /* ResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */; };
+		6F486E312A5AA61500D13AA4 /* BaseResponseJobDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */; };
+		6F486E332A5AAEF900D13AA4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486E322A5AAEF900D13AA4 /* String+Extension.swift */; };
 		6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AA2A51843500D7A000 /* JobItemView.swift */; };
 		6F56B5AD2A51853100D7A000 /* LocationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AC2A51853100D7A000 /* LocationComponent.swift */; };
 		6F56B5AF2A5187E900D7A000 /* ScrapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */; };
@@ -137,6 +139,8 @@
 		6F486E2A2A5A0D5D00D13AA4 /* ReservationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDTO.swift; sourceTree = "<group>"; };
 		6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDTO.swift; sourceTree = "<group>"; };
+		6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseJobDTO.swift; sourceTree = "<group>"; };
+		6F486E322A5AAEF900D13AA4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6F56B5AA2A51843500D7A000 /* JobItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItemView.swift; sourceTree = "<group>"; };
 		6F56B5AC2A51853100D7A000 /* LocationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationComponent.swift; sourceTree = "<group>"; };
 		6F56B5AE2A5187E900D7A000 /* ScrapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapButton.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				6F306C4F2A592CD900A241E6 /* LoginCredentialsDTO.swift */,
 				6F486E2C2A5A0D9400D13AA4 /* UserInfoDTO.swift */,
 				6F486E2E2A5A900D00D13AA4 /* ResultDTO.swift */,
+				6F486E302A5AA61500D13AA4 /* BaseResponseJobDTO.swift */,
 			);
 			path = Server1;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				6F56B5B62A51935600D7A000 /* UINavigationController+Extension.swift */,
 				6F306C4B2A592CA000A241E6 /* Encodable+Extension.swift */,
 				6F6EA1232A59F40300189B89 /* Date+Extension.swift */,
+				6F486E322A5AAEF900D13AA4 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				6F306C582A593CF400A241E6 /* ErrorView.swift in Sources */,
 				6FB4A2B92A4DFDE100943CD4 /* Image+Extension.swift in Sources */,
 				6F56B5C42A51CF5F00D7A000 /* Country.swift in Sources */,
+				6F486E332A5AAEF900D13AA4 /* String+Extension.swift in Sources */,
 				6FB4A2D42A4E05FD00943CD4 /* Size.swift in Sources */,
 				6F56B5BB2A519AD700D7A000 /* JobItemDetailView.swift in Sources */,
 				6FB4A2E32A5050F500943CD4 /* BookView.swift in Sources */,
@@ -636,6 +643,7 @@
 				6F306C322A58984700A241E6 /* PostalCodeWebView.swift in Sources */,
 				6F865A582A584D2A00142386 /* SplashView.swift in Sources */,
 				6FB4A2A62A4DDD5700943CD4 /* ContentView.swift in Sources */,
+				6F486E312A5AA61500D13AA4 /* BaseResponseJobDTO.swift in Sources */,
 				6F56B5B72A51935600D7A000 /* UINavigationController+Extension.swift in Sources */,
 				6F56B5AB2A51843500D7A000 /* JobItemView.swift in Sources */,
 				6F306C4C2A592CA000A241E6 /* Encodable+Extension.swift in Sources */,

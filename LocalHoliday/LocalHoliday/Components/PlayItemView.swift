@@ -13,7 +13,7 @@ struct PlayItemView: View {
     var isScrapButtonHidden = false
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
-            SquareImageView(imageURL: playItem.imageURL)
+            RoundedSquareImageView(imageURL: playItem.imageURL)
             
             VStack(alignment: .leading, spacing: Size.XS) {
                 HStack {

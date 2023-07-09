@@ -41,14 +41,14 @@ struct JobItemDetailView: View {
                                 Text("작업기간   ")
                                     .font(.B2M)
                                     .foregroundColor(.black)
-                                + Text("\(jobItem.startTime) ~ \(jobItem.endTime)")
+                                + Text("\(jobItem.startTime.toDateIfIsoFormatted?.localizedFormat ?? "") ~ \(jobItem.endTime.toDateIfIsoFormatted?.localizedFormat ?? "")")
                                     .font(.B2M)
                                     .foregroundColor(.gray500)
                                 
                                 Text("급여   ")
                                     .font(.B2M)
                                     .foregroundColor(.black)
-                                + Text(jobItem.salary == nil ? "협의" : "\(jobItem.salary!)")
+                                + Text(jobItem.salary == 0 ? "협의" : "\(jobItem.salary)")
                                     .font(.B2M)
                                     .foregroundColor(.tertiary)
                                 

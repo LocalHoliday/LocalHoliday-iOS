@@ -80,7 +80,9 @@ struct CountryDetailView: View {
                 modelData.getPlayItems(country.title) { playItems in
                     self.playItems = playItems
                 }
-                jobItems = []
+                modelData.getJobItems(country.title) { jobItems in
+                    self.jobItems = jobItems
+                }
             }
             for i in 0..<playItems.count {
                 playItems[i].isScrapped = modelData.isContained(playItems[i])

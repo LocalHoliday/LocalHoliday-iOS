@@ -110,21 +110,40 @@ struct SquareImageView: View {
 }
 
 struct RoundedSquareImageView: View {
-    var imageName: String
+    var imageName: String?
     var aspectRatio: CGFloat?
-    var radius: CGFloat
+    var radius: CGFloat = Radius.Small
+    var imageURL: String?
 
     var body: some View {
-        Color.clear
-            .aspectRatio(1.0, contentMode: .fit)
-            .overlay(
-                Image(imageName)
-                    .resizable()
-                    .aspectRatio(aspectRatio, contentMode: .fill)
-                    .background(Color.gray100)
-            )
-            .clipped()
-            .cornerRadius(radius)
+        if let imageURL {
+            Color.clear
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(
+                    AsyncImage(url: URL(string: imageURL)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(aspectRatio, contentMode: .fill)
+                            .background(Color.gray100)
+                    } placeholder: {
+                        // 로드 중에 표시할 로딩 화면 또는 이미지
+                        ProgressView()
+                    }
+                )
+                .clipped()
+                .cornerRadius(radius)
+        } else {
+            Color.clear
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(
+                    Image(imageName ?? "Splash")
+                        .resizable()
+                        .aspectRatio(aspectRatio, contentMode: .fill)
+                        .background(Color.gray100)
+                )
+                .clipped()
+                .cornerRadius(radius)
+        }
     }
 }
 

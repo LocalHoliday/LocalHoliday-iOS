@@ -11,6 +11,9 @@ struct SignUp4View: View {
     @EnvironmentObject var authData: AuthData
     @Binding var email: String
     @Binding var phase: Int
+    var isValid: Bool {
+        isValidEmail(email: email)
+    }
     @State var isVerified: Int = 0 // 0 : not yet, 1 : fail, 2 : pass, 3 : loading
     var body: some View {
         VStack(alignment: .leading, spacing: Size.Outer * 2) {
@@ -35,6 +38,8 @@ struct SignUp4View: View {
                         } else {
                             isVerified = 1
                         }
+                    } onError: {
+                        isVerified = 5
                     }
                 } label: {
                     RoundedRectangle(cornerRadius: Radius.Small)
@@ -56,7 +61,7 @@ struct SignUp4View: View {
                 }
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
-                .disabled(isVerified == 3)
+                .disabled(!isValid || isVerified == 3)
             }
             
             Spacer()
@@ -64,10 +69,17 @@ struct SignUp4View: View {
             RoundedRectangleButton(text: "다음") {
                 phase += 1
             }
-            .disabled(email == "" || isVerified != 2)
+            .disabled(isVerified != 2)
         }
         .padding(Size.Inner)
     }
+    
+    private func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+
 }
 
 struct SignUp4View_Previews: PreviewProvider {

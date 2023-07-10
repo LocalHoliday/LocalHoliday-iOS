@@ -16,6 +16,9 @@ struct PickItemView: View {
     private var isSelectedAllPlayItems: Bool {
         self.modelData.pickedPlayItems.filter { !$0.isSelected }.count == 0
     }
+    private var selectedItems: Int {
+        self.modelData.pickedJobItems.filter { $0.isSelected }.count + self.modelData.pickedPlayItems.filter { $0.isSelected }.count
+    }
     var body: some View {
         GeometryReader { proxy in
             VStack {
@@ -179,11 +182,12 @@ struct PickItemView: View {
                                 .frame(maxWidth: proxy.size.width / 5 * 3, maxHeight: 52)
                                 .foregroundColor(.Primary)
                                 .cornerRadius(Radius.Small)
-                            Text("예약하기")
+                            Text(selectedItems == 0 ? "최소 1개 이상 선택해야 합니다" : "예약하기")
                                 .font(.H4B)
                                 .foregroundColor(.white)
                         }
                     }
+                    .disabled(selectedItems == 0)
                     .buttonStyle(.plain)
                     .padding(.vertical, Size.Inner)
                     

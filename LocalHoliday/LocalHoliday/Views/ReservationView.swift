@@ -165,7 +165,7 @@ struct ReservationView: View {
                                     RoundedRectangle(cornerRadius: Radius.Small)
                                         .fill(Color.Primary)
                                         .frame(width: proxy.size.width / 5 * 3, height: 60)
-                                    Text("예약하기")
+                                    Text(isValidDate ? "예약하기" : "날짜가 올바르지 않습니다.")
                                         .font(.H4B)
                                         .foregroundColor(.white)
                                 }

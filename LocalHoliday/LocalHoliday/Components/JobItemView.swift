@@ -10,7 +10,7 @@ import SwiftUI
 struct JobItemView: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var jobItem: JobItem
-    var isScrapButtonHidden = false
+    var isScrapButtonHidden = true
     var body: some View {
         HStack(alignment: .center, spacing: Size.M * 2) {
             RoundedSquareImageView(imageURL: jobItem.imageURL)

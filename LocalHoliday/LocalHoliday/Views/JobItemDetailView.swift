@@ -52,6 +52,7 @@ struct JobItemDetailView: View {
                                     .font(.B2M)
                                     .foregroundColor(.tertiary)
                                 
+                                /*
                                 Text("담당자   ")
                                     .font(.B2M)
                                     .foregroundColor(.black)
@@ -63,6 +64,7 @@ struct JobItemDetailView: View {
                                     .foregroundColor(.black)
                                 + Text(jobItem.phoneNumber)
                                     .font(.B2M)
+                                 */
                             }
                             .padding(Size.Inner)
                             
@@ -77,14 +79,16 @@ struct JobItemDetailView: View {
                     }
                 }
                 HStack {
+                    /*
                     ScrapButton(isScrapped: $jobItem.isScrapped)
-                        .onChange(of: jobItem.isScrapped) { newValue in
-                            if newValue {
+                        .onChange(of: jobItem.isScrapped) { _ in
+                            if jobItem.isScrapped {
                                 modelData.scrapJobItem(jobItem)
                             } else {
                                 modelData.unscrapJobItem(jobItem)
                             }
                         }
+                     */
                     Button {
                         print("일정에 추가하기 버튼")
                         self.modelData.addJobItem(self.jobItem)

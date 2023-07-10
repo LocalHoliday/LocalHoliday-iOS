@@ -87,9 +87,13 @@ class BaseRepository {
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw NetworkError.invalidResponse
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse(-999)
+                }
+                let code = httpResponse.statusCode
+                if code != 200 {
+                    print("http error! errorCode : \(code), response : \(response), data: \(String(data: data, encoding: .utf8))")
+                    throw NetworkError.invalidResponse(httpResponse.statusCode)
                 }
                 return data
             }
@@ -105,9 +109,12 @@ class BaseRepository {
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw NetworkError.invalidResponse
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse(-999)
+                }
+                let code = httpResponse.statusCode
+                if code != 200 {
+                    throw NetworkError.invalidResponse(httpResponse.statusCode)
                 }
                 return data
             }
@@ -122,9 +129,12 @@ class BaseRepository {
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw NetworkError.invalidResponse
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse(-999)
+                }
+                let code = httpResponse.statusCode
+                if code != 200 {
+                    throw NetworkError.invalidResponse(httpResponse.statusCode)
                 }
                 return data
             }
@@ -138,9 +148,12 @@ class BaseRepository {
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 else {
-                    throw NetworkError.invalidResponse
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse(-999)
+                }
+                let code = httpResponse.statusCode
+                if code != 200 {
+                    throw NetworkError.invalidResponse(httpResponse.statusCode)
                 }
                 return data
             }

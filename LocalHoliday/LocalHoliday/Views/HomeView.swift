@@ -100,10 +100,21 @@ struct HomeView: View {
         .onAppear {
             modelData.getRecommendItems { recommends in
                 recommendsVO.recommends = recommends
+                for i in 0..<recommendsVO.recommends.count {
+                    if modelData.isContained(recommendsVO.recommends[i].jobItem) {
+                        recommendsVO.recommends[i].jobItem.isScrapped = true
+                    }
+                    for j in 0..<recommendsVO.recommends[i].playItems.count {
+                        if modelData.isContained(recommendsVO.recommends[i].playItems[j]) {
+                            recommendsVO.recommends[i].playItems[j].isScrapped = true
+                        }
+                    }
+                }
             }
         }
     }
 }
+// e1b846c9-0ebe-41ac-a0c1-4ffe2c043a04
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

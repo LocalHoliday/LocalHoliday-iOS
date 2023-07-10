@@ -53,44 +53,57 @@ struct ReservationView: View {
                                 .font(.B3R)
                                 .padding(.top, Size.Inner)
                             HStack {
-                                DatePicker("가는 날", selection: $startDate, displayedComponents: .date)
-                                    .padding(.horizontal, Size.Inner)
-                                    .font(.B3R)
-                                DatePicker("오는 날", selection: $endDate, displayedComponents: .date)
-                                    .padding(.horizontal, Size.Inner)
-                                    .font(.B3R)
+                                Spacer()
+                                VStack(alignment: .leading) {
+                                    Text("가는 날")
+                                        .font(.B3R)
+                                    DatePicker("", selection: $startDate, displayedComponents: .date)
+                                        .labelsHidden()
+                                }
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .leading) {
+                                    Text("오는 날")
+                                        .font(.B3R)
+                                    DatePicker("", selection: $endDate, displayedComponents: .date)
+                                        .labelsHidden()
+                                }
+                                Spacer()
                             }
                         }
                         
                         Divider()
                         
-                        Group {
-                            Text("로컬 알바")
-                                .foregroundColor(.Primary)
-                            + Text(" 확인")
-                        }
-                        .font(.H3SB)
-                        
-                        ForEach(modelData.selectedJobItem) { jobItem in
-                            JobItemViewWithoutBinding(jobItem: jobItem)
-                                .frame(maxHeight: 100)
-                            Divider()
-                        }
-                        
-                        VStack(alignment: .leading, spacing: Size.Inner) {
+                        if modelData.selectedJobItem.count > 0 {
                             Group {
-                                Text("로컬 놀거리")
+                                Text("로컬 알바")
                                     .foregroundColor(.Primary)
                                 + Text(" 확인")
                             }
                             .font(.H3SB)
                             
-                            ForEach(modelData.selectedPlayItem) { playItem in
-                                PlayItemViewWithoutBinding(playItem: playItem)
+                            ForEach(modelData.selectedJobItem) { jobItem in
+                                JobItemViewWithoutBinding(jobItem: jobItem)
                                     .frame(maxHeight: 100)
-                                Divider()
                             }
+                        }
+                        
+                        VStack(alignment: .leading, spacing: Size.Inner) {
                             
+                            if modelData.selectedPlayItem.count > 0 {
+                                Group {
+                                    Text("로컬 놀거리")
+                                        .foregroundColor(.Primary)
+                                    + Text(" 확인")
+                                }
+                                .font(.H3SB)
+                                
+                                ForEach(modelData.selectedPlayItem) { playItem in
+                                    PlayItemViewWithoutBinding(playItem: playItem)
+                                        .frame(maxHeight: 100)
+                                }
+                            }
                             Divider()
                             
                             Text("예약 시 주의사항")
@@ -256,6 +269,7 @@ struct ReservationView_Previews: PreviewProvider {
         NavigationStack {
             ReservationView()
                 .environmentObject(ModelData(pickedJobItems: JobItem.defaultJobItems, pickedPlayItems: PlayItem.defaultPlayItems))
+                .environmentObject(AuthData())
         }
     }
 }

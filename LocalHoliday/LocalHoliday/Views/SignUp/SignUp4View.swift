@@ -66,7 +66,7 @@ struct SignUp4View: View {
             
             Spacer()
             
-            RoundedRectangleButton(text: "다음") {
+            RoundedRectangleButton(text: isVerified != 2 ? "중복 확인을 눌러주세요" : "다음") {
                 phase += 1
             }
             .disabled(isVerified != 2)

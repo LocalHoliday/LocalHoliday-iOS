@@ -17,7 +17,7 @@ struct SignUp3View: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text(address == "" ? "서울시 동작구 상도동" : address)
+                    Text(address == "" ? "도로명 주소로 찾기를 터치해주세요" : address)
                         .font(.H4M)
                         .foregroundColor(address == "" ? .gray100 : .black)
                     Divider()

@@ -58,6 +58,7 @@ struct LoginView: View {
                         isLoading = false
                     }
                 }
+                .padding(.bottom, Size.Inner)
                 .disabled(isLoading)
             }
             .padding(.horizontal, Size.Outer)

@@ -104,7 +104,9 @@ final class ModelData: ObservableObject {
     func scrapJobItem(_ item: JobItem) {
         if !scrappedJobItems.contains(item) {
             scrappedJobItems.append(item)
+            print("scrapped!")
         }
+        print("all scrapped Job Items : \(scrappedJobItems)")
     }
     
     func scrapPlayItem(_ item: PlayItem) {

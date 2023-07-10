@@ -75,21 +75,31 @@ struct CountryDetailView: View {
             }
         }
         .onAppear {
-            if !isAPICalled {
-                isAPICalled.toggle()
-                modelData.getPlayItems(country.title) { playItems in
-                    self.playItems = playItems
+            modelData.getPlayItems(country.title) { playItems in
+                var items = playItems
+                for i in 0..<playItems.count {
+                    if modelData.isContained(items[i]) {
+                        items[i].isScrapped = true
+                    }
                 }
-                modelData.getJobItems(country.title) { jobItems in
-                    self.jobItems = jobItems
+                
+                self.playItems = items
+            }
+            modelData.getJobItems(country.title) { jobItems in
+                var items = jobItems
+                for i in 0..<jobItems.count {
+                    if modelData.isContained(items[i]) {
+                        items[i].isScrapped = true
+                    }
                 }
+                self.jobItems = items
             }
-            for i in 0..<playItems.count {
-                playItems[i].isScrapped = modelData.isContained(playItems[i])
-            }
-            for i in 0..<jobItems.count {
-                jobItems[i].isScrapped = modelData.isContained(jobItems[i])
-            }
+//            for i in 0..<playItems.count {
+//                playItems[i].isScrapped = modelData.isContained(playItems[i])
+//            }
+//            for i in 0..<jobItems.count {
+//                jobItems[i].isScrapped = modelData.isContained(jobItems[i])
+//            }
         }
         .navigationTitle("")
         .toolbar(.hidden)

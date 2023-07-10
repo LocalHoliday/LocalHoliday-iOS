@@ -10,5 +10,5 @@ import Foundation
 enum NetworkError: Error {
     case invalidURL
     case encodingError
-    case invalidResponse
+    case invalidResponse(Int)
 }

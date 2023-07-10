@@ -55,6 +55,7 @@ struct PlayItemDetailView: View {
                     BackButton(color: .white)
                 }
                 HStack {
+                    /*
                     ScrapButton(isScrapped: $playItem.isScrapped)
                         .onChange(of: playItem.isScrapped) { newValue in
                             if newValue {
@@ -63,6 +64,7 @@ struct PlayItemDetailView: View {
                                 modelData.unscrapPlayItem(playItem)
                             }
                         }
+                     */
                     Button {
                         print("일정에 추가하기 버튼")
                         self.modelData.addPlayItem(self.playItem)

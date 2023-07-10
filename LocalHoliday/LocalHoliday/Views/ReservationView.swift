@@ -191,11 +191,17 @@ struct ReservationView: View {
                                 HStack {
                                     Image.Time
                                     
-                                    Text("2023.06.30 ~ 2023.07.04")
+                                    Text("\(startDate.reservationFormat) ~ \(endDate.reservationFormat)")
                                         .font(.B3R)
                                         .foregroundColor(.gray500)
-                                    
-                                    Text("4박 5일")
+                                    let calendar = Calendar.current
+
+                                    let start = calendar.startOfDay(for: startDate) // 시작일
+                                    let end = calendar.startOfDay(for: endDate) // 종료일
+
+                                    let components = calendar.dateComponents([.day], from: start, to: end)
+                                    let daysBetween = components.day
+                                    Text("\((daysBetween ?? -1))박 \((daysBetween ?? -1) + 1)일")
                                         .font(.B3R)
                                         .foregroundColor(.tertiary)
                                 }

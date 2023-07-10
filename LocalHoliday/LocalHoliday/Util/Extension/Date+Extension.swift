@@ -20,6 +20,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var reservationFormat: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter.string(from: self)
+    }
+    
     static func fromISOString(_ dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")

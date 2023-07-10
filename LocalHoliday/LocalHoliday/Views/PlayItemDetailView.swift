@@ -46,9 +46,10 @@ struct PlayItemDetailView: View {
                             Rectangle()
                                 .frame(maxWidth: .infinity, maxHeight: Size.XS)
                                 .foregroundColor(.gray100)
-                            
+                            /*
                             ReviewsView(reviews: $reviews, item: .constant(.playItem(playItem)))
                                 .padding(Size.Inner)
+                             */
                         }
                     }
                     BackButton(color: .white)

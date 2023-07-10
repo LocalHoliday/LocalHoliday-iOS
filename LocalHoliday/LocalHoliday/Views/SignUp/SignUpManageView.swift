@@ -21,26 +21,27 @@ struct SignUpManageView: View {
             case 2: SignUpAgreeView(phase: $phase)
             case 3: SignUp1View(name: $user.name, phase: $phase)
             case 4: SignUp2View(phoneNumber: $user.phoneNumber, phase: $phase)
-            case 5: SignUp3View(address: $user.address, phase: $phase)
-            case 6: SignUp4View(email: $user.email, phase: $phase)
-            case 7: SignUp5View(password: $user.password, phase: $phase)
-            case 8: SignUp6View(nickname: $user.nickname, phase: $phase)
-            case 9: ProgressView()
-            case 10: SignUpFinishView(nickname: $user.nickname, phase: $phase)
-            case 11: EmptyView()
+            /* case 5: SignUp3View(address: $user.address, phase: $phase)*/
+            case 5: SignUp4View(email: $user.email, phase: $phase)
+            case 6: SignUp5View(password: $user.password, phase: $phase)
+            case 7: SignUp6View(nickname: $user.nickname, phase: $phase)
+            case 8: ProgressView()
+            case 9: SignUpFinishView(nickname: $user.nickname, phase: $phase)
+            case 10: EmptyView()
             default: ErrorView()
             }
         }
         .animation(.spring(), value: phase)
         .onChange(of: phase) { newValue in
-            if newValue == 9 {
+            if newValue == 8 {
+                user.address = UUID().uuidString
                 authData.signUp(user) { result in
                     token = result
                     phase += 1
                 } onError: {
                     phase += 999
                 }
-            } else if newValue == 11 {
+            } else if newValue == 10 {
                 dismiss()
             }
         }

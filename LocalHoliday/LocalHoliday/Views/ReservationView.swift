@@ -45,10 +45,12 @@ struct ReservationView: View {
                                 .font(.B3R)
                             + Text(authData.user.phoneNumber)
                                 .font(.H3M)
+                            /*
                             Text("사는 곳   ")
                                 .font(.B3R)
                             + Text(authData.user.address)
                                 .font(.H3M)
+                             */
                             Text("로컬 홀리데이 기간을 입력해주세요.")
                                 .font(.B3R)
                                 .padding(.top, Size.Inner)

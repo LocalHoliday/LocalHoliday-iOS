@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyPageView: View {
     @EnvironmentObject var authData: AuthData
+    @State private var showingAlert = false
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .leading) {
@@ -84,6 +85,28 @@ struct MyPageView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    
+                    
+                    Button {
+                        print("회원 탈퇴!!")
+                        showingAlert = true
+                    } label: {
+                        HStack(spacing: Size.XL) {
+                            Image.LogOut
+                                .renderingMode(.template)
+                                .foregroundColor(.red)
+                            Text("회원 탈퇴")
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .alert("정말 탈퇴하시겠습니까?", isPresented: $showingAlert) {
+                        Button("취소", role: .cancel) { }
+                        Button("탈퇴", role: .destructive) {
+                            authData.signOut { _ in
+                                authData.loginInfo = nil
+                            }
+                        }
+                    }
                 }
                 .font(.B2M)
                 .padding(Size.Inner)

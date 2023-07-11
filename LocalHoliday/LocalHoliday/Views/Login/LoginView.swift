@@ -11,6 +11,7 @@ struct LoginView: View {
     @EnvironmentObject var authData: AuthData
     @State private var loginCredentials: LoginCredentials = LoginCredentials(email: "", password: "")
     @State private var isLoading = false
+    @State private var isError = false
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: Size.Inner) {
@@ -47,13 +48,15 @@ struct LoginView: View {
                 Spacer()
                 Spacer()
                 
-                RoundedRectangleButton(text: "로그인") {
+                RoundedRectangleButton(text: isError ? "다시 시도해주세요" : "로그인") {
                     isLoading = true
                     authData.login(loginCredentials) { result in
                         authData.loginInfo = result
                         authData.getInfo() { info in
                             authData.user = User.fromDTO(info)
                         }
+                    } onError: {
+                        isError = true
                     } onCompletion: {
                         isLoading = false
                     }

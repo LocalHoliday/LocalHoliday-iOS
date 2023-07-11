@@ -42,6 +42,20 @@ class BaseRepository {
         return request
     }
     
+    private func makeDeleteRequest(url: String, parameters: [String: Any], token: String?) -> URLRequest {
+        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "DELETE"
+        
+        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        request.httpBody = jsonData
+        return request
+    }
+    
     private func makeMultipartRequest(url: String, image: UIImage?, queries: [String: Any]?, token: String?) -> URLRequest {
         
         var request = URLRequest(url: URL(string: url)!)
@@ -153,6 +167,27 @@ class BaseRepository {
                 }
                 let code = httpResponse.statusCode
                 if code != 200 {
+                    throw NetworkError.invalidResponse(httpResponse.statusCode)
+                }
+                return data
+            }
+            .decode(type: R.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func makeDeletePublisher<R: Decodable>(withParameter dictionary: [String: Any], url: String, token: String?) -> AnyPublisher<R, Error> {
+        print("parameter dictionary : \(dictionary)")
+        let request = makeDeleteRequest(url: url, parameters: dictionary, token: token)
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw NetworkError.invalidResponse(-999)
+                }
+                let code = httpResponse.statusCode
+                if code != 200 {
+                    print("http error! errorCode : \(code), response : \(response), data: \(String(data: data, encoding: .utf8))")
                     throw NetworkError.invalidResponse(httpResponse.statusCode)
                 }
                 return data

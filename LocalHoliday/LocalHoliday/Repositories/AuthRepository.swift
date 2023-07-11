@@ -14,6 +14,7 @@ protocol AuthRepository {
     func getInfo(token: String?) -> AnyPublisher<UserInfoDTO, Error>
     func verifyEmail(_ email: String, token: String?) -> AnyPublisher<ResultDTO, Error>
     func verifyNickname(_ nickname: String, token: String?) -> AnyPublisher<ResultDTO, Error>
+    func signOut(token: String?) -> AnyPublisher<BaseResponseDTO, Error>
 }
 
 class BaseAuthRepository: BaseRepository {
@@ -32,6 +33,10 @@ class BaseAuthRepository: BaseRepository {
     }
     var verifyNicknameURL: String {
         baseURL + "verify/nickname"
+    }
+    let baseURL1: String = "http://15.165.241.113:8080/"
+    var signOutURL: String {
+        baseURL1 + "user/delete"
     }
 }
 
@@ -54,5 +59,8 @@ final class DefaultAuthRepository: BaseAuthRepository, AuthRepository {
     
     func verifyNickname(_ nickname: String, token: String?) -> AnyPublisher<ResultDTO, Error> {
         return makeGetPublisher(withParameter: ["nickname": nickname], url: verifyNicknameURL, token: token)
+    }
+    func signOut(token: String?) -> AnyPublisher<BaseResponseDTO, Error> {
+        return makeDeletePublisher(withParameter: [:], url: signOutURL, token: token)
     }
 }

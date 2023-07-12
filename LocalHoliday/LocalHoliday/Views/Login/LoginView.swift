@@ -57,6 +57,7 @@ struct LoginView: View {
                         }
                     } onError: {
                         isError = true
+                        isLoading = false
                     } onCompletion: {
                         isLoading = false
                     }

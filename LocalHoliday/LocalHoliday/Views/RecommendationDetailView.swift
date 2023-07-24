@@ -38,12 +38,12 @@ struct RecommendationDetailView: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, Size.Inner)
                         
-                        Text("3박 4일 예상 ??")
-                            .font(.B1M)
-                            .foregroundColor(.accentColor)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, Size.Inner)
-                            .padding(.top, Size.S)
+//                        Text("3박 4일 예상 ??")
+//                            .font(.B1M)
+//                            .foregroundColor(.accentColor)
+//                            .foregroundColor(.white)
+//                            .padding(.horizontal, Size.Inner)
+//                            .padding(.top, Size.S)
                     }
                 }
                 
@@ -69,7 +69,7 @@ struct RecommendationDetailView: View {
                             Divider()
                         }
                         Group {
-                            Text(recommend.location)
+                            Text(recommend.title)
                                 .foregroundColor(.Primary)
                             + Text("의 놀거리들을 추천해드릴게요")
                                 .foregroundColor(.gray500)
